@@ -1,9 +1,12 @@
 # The Main function of QPC-deconvolution
 # ref_list: gene expression from isolated cells, or a matrix of expression profile of cells.
 
-# gene_expression_matrix could use TMM normalized and Rawcounts
-# df_source put your data source (Rawcounts or TMM)
-
+#' @param gene_expression_matrix could use TMM normalized and Rawcounts
+#' @param df_source put your data source (Rawcounts or TMM)
+#' @param Perm Set permutations for statistical analysis (≥100 permutations recommended).
+#' @param QN boolean. Wheter to quantile normalize the data. Data should be normalized.
+#' @param absolute Set to TRUE for CIBERSORT absolute mode.
+#' 
 #Deconvolute using CIBERSORT and EPIC_custom  
 source("~/CIBERSORT_modified.R")
 
