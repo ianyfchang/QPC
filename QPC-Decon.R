@@ -94,7 +94,7 @@ for(k in 1:length(All_list)){
 
 
 #Merge result ==============================
-#norMeth_bulk <- c("RawCount") 
+
 
 MergeQPCres <- function(){
   decon_Meth <- c( "Cibersort","EPIC")
