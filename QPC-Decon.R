@@ -6,7 +6,7 @@
 #' @param Perm Set permutations for statistical analysis (≥100 permutations recommended).
 #' @param QN boolean. Wheter to quantile normalize the data. Data should be normalized.
 #' @param absolute Set to TRUE for CIBERSORT absolute mode.
-#' 
+ 
 #Deconvolute using CIBERSORT and EPIC_custom  
 source("~/CIBERSORT_modified.R")
 
