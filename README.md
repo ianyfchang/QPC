@@ -1,7 +1,7 @@
-# QPC-Deconvolution   
+# QPC-GBM Deconvolution   
 ## Overview
 
-For unified access to computational methods for estimating glioblastoma multiforme cell fractions from single cell RNA sequencing data or bulk RNA sequencing data.
+QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions of **GBM*** **C**ell Type.For unified access to computational methods for estimating glioblastoma multiforme cell fractions from single cell RNA sequencing data or bulk RNA sequencing data.
 
 ### Installation
 You can install the released version of immunedeconv from [github](https://github.com/) with:
