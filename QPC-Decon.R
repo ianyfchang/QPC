@@ -1,4 +1,4 @@
-# The Main function of QPC-deconvolution
+# The Main function of QPC-GBM deconvolution
 
 #' @param gene_expression_matrix could use TMM normalized and Rawcounts
 #' @param ref_list gene expression from isolated cells, or a matrix of expression profile of cells.
@@ -9,7 +9,7 @@
  
 
 
-#Deconvolute using CIBERSORT and EPIC_custom  
+#Deconvolute using CIBERSORT and Immunedeconv  
 source("~/CIBERSORT_modified.R")
 
 #input reference information================================
@@ -30,7 +30,7 @@ All_list <- list(DC_list, EC_list, MP_list, MG_list, NKT_list, OD_list, TC_list,
 
 #main function
 QPCdecon <- function(decon, FAM, Sampling, num, norMeth){
-  ref_list <- list.files(path = paste0("~/Reference_noPro"),pattern = paste0("Reference_GSE182109_11celltype_",FAM,"_",Sampling,"_n",num,"_",norMeth,collapse="|"),full.names = T,recursive = T)
+  ref_list <- list.files(path = paste0("~/"),pattern = paste0("Reference_GSE182109_11celltype_",FAM,"_",Sampling,"_n",num,"_",norMeth,collapse="|"),full.names = T,recursive = T)
 
   
   lapply(gene_expression_matrix, function(filename){
@@ -74,8 +74,8 @@ QPCdecon <- function(decon, FAM, Sampling, num, norMeth){
         dec_df <- as.data.frame(dec_df)
         df <- round(dec_df * 100, digits = 2)
       }
-      write.csv(df, paste0("data/DeconRes_ref_",fam,sampling,num,norMeth,"_",df_source,"_",decon,".csv"))
-      print(paste0("data/DeconRes_ref_",fam,sampling,num,norMeth,"_",df_source,"_",decon,".csv"))
+      write.csv(df, paste0("~/DeconRes_ref_",fam,sampling,num,norMeth,"_",df_source,"_",decon,".csv"))
+      print(paste0("~/DeconRes_ref_",fam,sampling,num,norMeth,"_",df_source,"_",decon,".csv"))
       gc()
     })
   })
