@@ -5,5 +5,7 @@ An R package for unified access to computational methods for estimating glioblas
 
 ### Installation
 You can install the released version of immunedeconv from github with:
+```R
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
+```
