@@ -4,6 +4,10 @@
 QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions of **g**lio**b**lastoma **m**ultiforme cell (GBM) Cell Type from human single cell RNA sequencing data.
 It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.
 
+
+### RNA-seq data normalization methods
+After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
+
 ### Loading libraries
 You can install the released version of immunedeconv from [github](https://github.com/) with:
 ```R
