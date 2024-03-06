@@ -17,7 +17,7 @@ if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("edgeR")       
  
-library(edgeR)
+
 library(tibble)
 library(tidyverse)
 library(xlsx)
@@ -25,7 +25,19 @@ library(xlsx)
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
+#Convert counts to TMM
 
+```R
+library(edgeR)
+# make the DGEList:
+dgelist <- DGEList(counts = data, group = colnames(data))
+keep <- rowSums(cpm(dgelist )>1) >= 2
+dgelist <- dgelist[keep, keep.lib.sizes=FALSE]
+#calculate TMM normalization factors
+dgelist <- calcNormFactors(dgelist,method = "TMM")
+get the normalized counts
+dgelist <- cpm(dgelist)
+```
 
 
 
