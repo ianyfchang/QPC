@@ -5,21 +5,26 @@ QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions 
 It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.
 
 
-### RNA-seq data normalization methods
-After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
+
 
 ### Loading libraries
 You can install the released version of immunedeconv from [github](https://github.com/) with:
 ```R
 install.packages("remotes")
-remotes::install_github("omnideconv/immunedeconv")    
+remotes::install_github("omnideconv/immunedeconv")
+
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("edgeR")       
  
 library("tibble")
 library("tidyverse")
 library("xlsx")
 ```
 
-
+### RNA-seq data normalization 
+After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
 
 
 
