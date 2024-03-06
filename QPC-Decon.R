@@ -8,24 +8,9 @@
 #' @param absolute Set to TRUE for CIBERSORT absolute mode.
  
 
-
 #Deconvolute using CIBERSORT and Immunedeconv  
 source("~/CIBERSORT_modified.R")
 
-#input reference information================================
-All_list <- list()
-DC_list <- list("Cibersort", 611, "ALL", 100, "SCT")
-EC_list <- list("EPIC", 611, "ALL", 20, "Raw")
-MP_list <- list("Cibersort", 211, "ALL", 100, "SCT")
-MG_list <- list("Cibersort", 611, "ALL", 100, "TMM")
-NKT_list <- list("Cibersort", 211, "ALL", 100, "TPM")
-OD_list <- list("Cibersort", 611, "DatasetWhole_MinDist", 50, "TPM")
-TC_list <- list("Cibersort", 611, "ALL", 50, "Raw")
-Tumor_list <- list("Cibersort", 611, "ALL", 100, "TMM")
-BC_list <- list("EPIC", 611, "DatasetWhole_MinDist", 100, "TMM")
-MC_list <- list("Cibersort", 411, "ALL", 100, "Raw")
-
-All_list <- list(DC_list, EC_list, MP_list, MG_list, NKT_list, OD_list, TC_list, Tumor_list, BC_list, MC_list)
 
 
 #main function
@@ -81,21 +66,24 @@ QPCdecon <- function(decon, FAM, Sampling, num, norMeth){
   })
 }
 
-gene_expression_matrix <- ""
+#input reference 
+All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
+
+#input your bulk RNA sequencing
+gene_expression_matrix <- "~/Sample/TCGA_rawreadcounts_15.csv"
 df_Source <- "your data source"
-for(k in 1:length(All_list)){
-  decon <- All_list[[k]][[1]]
-  FAM <- All_list[[k]][[2]]
-  Sampling <- All_list[[k]][[3]]
-  num <- All_list[[k]][[4]]
-  norMeth <- All_list[[k]][[5]]
+
+for(k in 1:ncol(All_list)){
+  decon <- All_list[k,1]
+  FAM <- All_list[k,2]
+  Sampling <- All_list[k,3]
+  num <- All_list[k,4]
+  norMeth <- All_list[k,5]
+  print(paste(decon, FAM, Sampling, num, norMeth, sep = "_"))
   res <- QPCdecon(decon, FAM, Sampling, num, norMeth)
 }
 
-
 #Merge result ==============================
-
-
 MergeQPCres <- function(){
   decon_Meth <- c( "Cibersort","EPIC")
   FAM <- c(211,411,611)
