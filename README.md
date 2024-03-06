@@ -6,7 +6,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 ### RNA-seq data normalization methods
-After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
+After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
 
 ### Loading libraries
 You can install the released version of immunedeconv from [github](https://github.com/) with:
