@@ -29,7 +29,7 @@ After various analysis, we recommend using Raw counts or TMM normalized sequenci
 
 ```R
 #Convert counts to TMM
-library(edgeR)
+library(edgeR)     
 # make the DGEList:
 dgelist <- DGEList(counts = data, group = colnames(data))
 keep <- rowSums(cpm(dgelist )>1) >= 2
