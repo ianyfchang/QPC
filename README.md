@@ -13,11 +13,6 @@ You can install the released version of immunedeconv from [github](https://githu
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
 
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("edgeR")       
- 
-
 library(tibble)
 library(tidyverse)
 library(xlsx)
@@ -28,7 +23,11 @@ After various analysis, we recommend using Raw counts or TMM normalized sequenci
 
 
 ```R
-#Convert counts to TMM
+#Convert counts to TMM by EdgeR package
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("edgeR")
+
 library(edgeR)
 
 # make the DGEList:
