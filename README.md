@@ -10,6 +10,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 ### Loading libraries
 You can install the released version of immunedeconv from [github](https://github.com/) with:
 ```R
+# Loading required package
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
 
@@ -24,6 +25,7 @@ After various analysis, we recommend using Raw counts or TMM normalized sequenci
 
 ```R
 #Convert counts to TMM by EdgeR package
+# Loading required package
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("edgeR")
