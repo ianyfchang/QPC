@@ -9,6 +9,9 @@ You can install the released version of immunedeconv from [github](https://githu
 ```R
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
+library("tibble")
+library("tidyverse")
+library("xlsx")
 ```
 
 
