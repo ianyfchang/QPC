@@ -44,7 +44,8 @@ dgelist <- cpm(dgelist)
 ```
 
 An example of the input data in R is shown below.
-> dim(example.data)
+```R
+dim(example.data)
 [1] 18458    32
 example.data[1:6,1:6]
 
@@ -55,6 +56,7 @@ A2M     45347 56829 15779 39418 33654 32715
 A2ML1       2     0     1     3     0     0
 A3GALT2     3     5     2     4     1     1
 A4GALT    497   382   248   429   351   312
+```
 
 ### Reference
 1. Newman, A.M., Steen, C.B., Liu, C.L. et al. Determining cell type abundance and expression from bulk tissues with digital cytometry. Nat Biotechnol 37, 773–782 (2019). <br> (https://doi.org/10.1038/s41587-019-0114-2)
