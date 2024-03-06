@@ -16,6 +16,7 @@ remotes::install_github("omnideconv/immunedeconv")
 
 library(tibble)
 library(tidyverse)
+library(readr)
 library(xlsx)
 ```
 
