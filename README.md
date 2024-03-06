@@ -18,9 +18,9 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("edgeR")       
  
 library(edgeR)
-library("tibble")
-library("tidyverse")
-library("xlsx")
+library(tibble)
+library(tidyverse)
+library(xlsx)
 ```
 
 ### RNA-seq data normalization 
