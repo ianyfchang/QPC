@@ -15,9 +15,9 @@ remotes::install_github("omnideconv/immunedeconv")
 
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-
 BiocManager::install("edgeR")       
  
+library(edgeR)
 library("tibble")
 library("tidyverse")
 library("xlsx")
