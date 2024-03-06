@@ -8,7 +8,8 @@ It is for unified access to computational methods for estimating GBM fractions f
 You can install the released version of immunedeconv from [github](https://github.com/) with:
 ```R
 install.packages("remotes")
-remotes::install_github("omnideconv/immunedeconv") <br> 
+remotes::install_github("omnideconv/immunedeconv")    
+ 
 library("tibble")
 library("tidyverse")
 library("xlsx")
