@@ -24,7 +24,7 @@ After various analysis, we recommend using Raw counts or TMM normalized sequenci
 
 
 ```R
-#Convert counts to TMM by EdgeR package
+# Convert counts to TMM by EdgeR package
 # Loading required package
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
