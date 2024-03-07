@@ -45,17 +45,16 @@ dgelist <- cpm(dgelist)
 
 An example of the input data in R is shown below.
 ```R
-dim(example.data)
-[1] 18458    32
-example.data[1:5,1:5]
+dim(data)
+[1] 61155    15
+data[1:5,1:5]
 
-          TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393 
-5S_rRNA             11            0            4            0            3            
-5_8S_rRNA            8            0            0            2            0            
-7SK                  0            0            1            0            1            
-A1BG                24           52           25            1           33            
-A1BG-AS1            77           89           38            7           72           
-A1CF                 0            3            1            0            4            
+         TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
+A1BG-AS1           77           89           38            7           72
+A1CF                0            3            1            0            4
+A2M             75396        36243        20502        20106        16941
+A2M-AS1            26          163           19           29           31
+A2ML1             170          717          290          280          351          
 
 ```
 
