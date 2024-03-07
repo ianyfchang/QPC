@@ -46,7 +46,7 @@ A2ML1             170          717          290          280          351
 ```
 
 
-### Loading libraries
+### Basic usage
 You can install the released version of immunedeconv from [github](https://github.com/) with:
 ```R
 # Loading required package
