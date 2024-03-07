@@ -47,15 +47,16 @@ An example of the input data in R is shown below.
 ```R
 dim(example.data)
 [1] 18458    32
-example.data[1:6,1:6]
+example.data[1:5,1:5]
 
-          TCGA-26-5133   TCGA-HT-7902  TCGA-VM-A8CF  TCGA-14-1823  TCGA-DU-6393  
-A1BG        0                0              1              2              0     
-A1CF      595    67   292    52   259   112
-A2M     45347 56829 15779 39418 33654 32715
-A2ML1       2     0     1     3     0     0
-A3GALT2     3     5     2     4     1     1
-A4GALT    497   382   248   429   351   312
+          TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393 
+5S_rRNA             11            0            4            0            3            
+5_8S_rRNA            8            0            0            2            0            
+7SK                  0            0            1            0            1            
+A1BG                24           52           25            1           33            
+A1BG-AS1            77           89           38            7           72           
+A1CF                 0            3            1            0            4            
+
 ```
 
 ### Reference
