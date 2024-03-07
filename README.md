@@ -48,7 +48,9 @@ An example of the input data in R is shown below.
 dim(data)
 [1] 61155    15
 data[1:5,1:5]
-<font color="black">TCGA-26-5133TCGA-HT-7902TCGA-VM-A8CFTCGA-14-1823TCGA-DU-6393</font>
+
+
+             TCGA-26-5133  TCGA-HT-7902  TCGA-VM-A8CF  TCGA-14-1823  TCGA-DU-6393
 A1BG-AS1           77           89           38            7           72
 A1CF                0            3            1            0            4
 A2M             75396        36243        20502        20106        16941
