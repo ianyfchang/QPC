@@ -6,20 +6,6 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 
-
-### Loading libraries
-You can install the released version of immunedeconv from [github](https://github.com/) with:
-```R
-# Loading required package
-install.packages("remotes")
-remotes::install_github("omnideconv/immunedeconv")
-
-library(tibble)
-library(tidyverse)
-library(readr)
-library(xlsx)
-```
-
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
 
@@ -58,6 +44,22 @@ A2M-AS1            26          163           19           29           31
 A2ML1             170          717          290          280          351          
 
 ```
+
+
+### Loading libraries
+You can install the released version of immunedeconv from [github](https://github.com/) with:
+```R
+# Loading required package
+install.packages("remotes")
+remotes::install_github("omnideconv/immunedeconv")
+
+library(tibble)
+library(tidyverse)
+library(readr)
+library(xlsx)
+```
+
+
 
 ### Reference
 1. Newman, A.M., Steen, C.B., Liu, C.L. et al. Determining cell type abundance and expression from bulk tissues with digital cytometry. Nat Biotechnol 37, 773–782 (2019). <br> (https://doi.org/10.1038/s41587-019-0114-2)
