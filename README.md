@@ -7,24 +7,22 @@ It is for unified access to computational methods for estimating GBM fractions f
 ### Reference database
 Of all Reference database, we used single cell RNA sequecing in four normalized methodsfor test which methods are standard and widely used in scRNA-seq analysis
 
-Raw read counts           
+Raw read counts       
+[LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)   
+[SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) (sctransform) 
 [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)               
 [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)    
 
-Normalized values are stored in scRNA[["SCT"]]$data.      
 
-[SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) (sctransform) 
+Normalized values are stored here 
 ```R
+# SCT normalized
 scRNA[["SCT"]]$scale.data
-```
 
-[LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)  
-```R
+# LogNormalize
 scRNA[["SCT"]]$data
-```
 
-Raw read counts 
-```R
+# Raw read counts
 scRNA[["SCT"]]$counts
 ```
 
