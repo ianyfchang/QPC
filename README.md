@@ -7,7 +7,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 ### Reference database
 Of all Reference database, we used single cell RNA sequecing in four normalized methods.
 
-<font color = #Blue" >Raw read counts</font>   
+<font color =Blue">Raw read counts</font>   
 TMM (Trimmed mean of M-values)     
 TPM (Transcripts per million)      
 SCT
