@@ -7,7 +7,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 ### Reference database
 Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
 
-Raw read counts       
+ 
   
          
 [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)               
