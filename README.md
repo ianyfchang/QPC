@@ -16,14 +16,21 @@ Raw read counts
 
 Normalized values are stored here 
 ```R
+# Install sctransform from CRAN
+install.packages("sctransform")
+
+# Or the development version from GitHub:
+remotes::install_github("satijalab/sctransform", ref="develop")
+ 
+
 # SCT normalized
-scRNA[["SCT"]]$scale.data
+object[["SCT"]]$scale.data
 
 # LogNormalize
-scRNA[["SCT"]]$data
+object[["SCT"]]$data
 
 # Raw read counts
-scRNA[["SCT"]]$counts
+object[["SCT"]]$counts
 ```
 
 If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
