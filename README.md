@@ -10,7 +10,7 @@ Of all Reference database, we used single cell RNA sequecing in four normalized 
 Raw read counts           
 [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)               
 [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)      
-[SCT](https://github.com/satijalab/seurat/tree/656fc8b562d53e5d0cedda9e09d9dda81e8c00e9)
+[SCT]([https://github.com/satijalab/seurat/tree/656fc8b562d53e5d0cedda9e09d9dda81e8c00e9](https://satijalab.org/seurat/articles/sctransform_vignette.html)     
 
 
 
