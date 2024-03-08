@@ -24,13 +24,13 @@ remotes::install_github("satijalab/sctransform", ref="develop")
  
 
 # SCT normalized data
-object[["SCT"]]$scale.data
+seurat[["SCT"]]$scale.data
 
 # LogNormalize data
-object[["SCT"]]$data
+seurat[["SCT"]]$data
 
 # Raw read counts
-object[["SCT"]]$counts
+seurat[["SCT"]]$counts
 ```
 
 If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
