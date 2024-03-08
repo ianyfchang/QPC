@@ -23,10 +23,10 @@ install.packages("sctransform")
 remotes::install_github("satijalab/sctransform", ref="develop")
  
 
-# SCT normalized
+# SCT normalized data
 object[["SCT"]]$scale.data
 
-# LogNormalize
+# LogNormalize data
 object[["SCT"]]$data
 
 # Raw read counts
