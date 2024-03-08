@@ -21,7 +21,14 @@ install.packages("sctransform")
 
 # Or the development version from GitHub:
 remotes::install_github("satijalab/sctransform", ref="develop")
- 
+
+
+library(Seurat)
+library(sctransform)
+
+seurat <- CreateSeuratObject(counts = seurat_data)
+# run sctransform
+seurat <- SCTransform(seurat, vars.to.regress = "percent.mt", verbose = FALSE)
 
 # SCT normalized data
 seurat[["SCT"]]$scale.data
