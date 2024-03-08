@@ -5,7 +5,7 @@ QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions 
 It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.
 
 ### Reference database
-Of all Reference database, we used single cell RNA sequecing in four normalized methodsfor test.
+Of all Reference database, we used single cell RNA sequecing in four normalized methodsfor test which methods are standard and widely used in scRNA-seq analysis
 
 Raw read counts           
 [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)               
