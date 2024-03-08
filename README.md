@@ -5,16 +5,16 @@ QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions 
 It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.
 
 ### Reference database
-Of all Reference database, we used single cell RNA sequecing in four normalized methodsfor test which methods are standard and widely used in scRNA-seq analysis
+Of all Reference database, we used single cell RNA sequecing in four normalized methodsfor test which methods are standard and widely used in scRNA-seq analysis.If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
 
 Raw read counts       
 [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)   
-[SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) (sctransform) 
+[SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) (sctransform)            
 [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)               
 [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)    
 
 
-Normalized values are stored here 
+Normalized values are stored here. 
 ```R
 # Install sctransform from CRAN
 install.packages("sctransform")
@@ -40,7 +40,7 @@ seurat[["SCT"]]$data
 seurat[["SCT"]]$counts
 ```
 
-If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
+
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
