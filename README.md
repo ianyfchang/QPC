@@ -12,10 +12,18 @@ Raw read counts
 [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)    
 
 Normalized values are stored in scRNA[["SCT"]]$data.      
-[SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) (sctransform)     
+[SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) (sctransform)   
+```R
+scRNA[["SCT"]]$scale.data
+```
 [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)    
-
-
+```R
+scRNA[["SCT"]]$data
+```
+Raw read counts 
+```R
+scRNA[["SCT"]]$counts
+```
 
 If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
 
