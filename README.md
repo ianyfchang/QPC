@@ -10,9 +10,28 @@ Of all Reference database, we used single cell RNA sequecing in four normalized 
  
   
          
-[TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)               
-[TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)    
+         
+[TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)           
+[TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)             
 
+```R
+# Convert counts to TMM by EdgeR package
+# Loading required package
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("edgeR")
+
+library(edgeR)
+
+# make the DGEList:
+dgelist <- DGEList(counts = data, group = colnames(data))
+keep <- rowSums(cpm(dgelist )>1) >= 2
+dgelist <- dgelist[keep, keep.lib.sizes=FALSE]
+# calculate TMM normalization factors
+dgelist <- calcNormFactors(dgelist,method = "TMM")
+# get the normalized counts
+dgelist <- cpm(dgelist)
+```
 
 [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html) , [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) values and raw read counts are stored here. 
 ```R
@@ -43,24 +62,7 @@ seurat[["SCT"]]$counts
 After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
 
 
-```R
-# Convert counts to TMM by EdgeR package
-# Loading required package
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("edgeR")
 
-library(edgeR)
-
-# make the DGEList:
-dgelist <- DGEList(counts = data, group = colnames(data))
-keep <- rowSums(cpm(dgelist )>1) >= 2
-dgelist <- dgelist[keep, keep.lib.sizes=FALSE]
-# calculate TMM normalization factors
-dgelist <- calcNormFactors(dgelist,method = "TMM")
-# get the normalized counts
-dgelist <- cpm(dgelist)
-```
 
 An example of the input data in R is shown below.
 ```R
