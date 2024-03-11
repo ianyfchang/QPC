@@ -10,6 +10,9 @@ Of all Reference database, we used single cell RNA sequecing in four normalized 
          
          
 [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)      
+```R
+TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
+```
 
 [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)             
 
