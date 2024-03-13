@@ -91,19 +91,22 @@ library(tibble)
 library(tidyverse)
 library(readr)
 library(xlsx)                
+```
 
-                     TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
-Dendritic cells              2.88         1.99         0.86         1.74         5.42
-Endothelial cells           10.06         2.87         4.10         9.72        22.64
-Macrophage-like GAMs         0.00        11.91        21.18        18.65         0.00
-Microglia-like GAMs          0.00         0.00         0.00        20.95         0.00
-NKT-like cells               0.00         0.00         0.00         0.00         0.00
-Oligodendrocytes             1.49        82.71        21.28         0.53        13.68
-T cells                      0.00         0.00         0.00         0.00         0.00
-Tumor cells                 84.00         0.50        52.57        45.03        58.26
-B cells                      0.00         0.01         0.00         0.00         0.00
-Mural cells                  1.58         0.00         0.00         3.39         0.00
-otherCells                   0.00         0.00         0.00         0.00         0.00
+
+```R     
+##                      TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
+## Dendritic cells              2.88         1.99         0.86         1.74         5.42
+## Endothelial cells           10.06         2.87         4.10         9.72        22.64
+## Macrophage-like GAMs         0.00        11.91        21.18        18.65         0.00
+## Microglia-like GAMs          0.00         0.00         0.00        20.95         0.00
+## NKT-like cells               0.00         0.00         0.00         0.00         0.00
+## Oligodendrocytes             1.49        82.71        21.28         0.53        13.68
+## T cells                      0.00         0.00         0.00         0.00         0.00
+## Tumor cells                 84.00         0.50        52.57        45.03        58.26
+## B cells                      0.00         0.01         0.00         0.00         0.00
+## Mural cells                  1.58         0.00         0.00         3.39         0.00
+## otherCells                   0.00         0.00         0.00         0.00         0.00
 
 
 ```
