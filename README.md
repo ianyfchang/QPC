@@ -95,10 +95,10 @@ library(xlsx)
 
 ### Example            
 ```R
-#input reference table
+# input reference table
 All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
 
-#input your bulk RNA sequencing data
+# input your bulk RNA sequencing data
 gene_expression_matrix <- "TCGA_Rawreadcounts.csv"
 df_Source <- "RawCounts"
 
@@ -113,8 +113,8 @@ for(k in 1:ncol(All_list)){
   res <- QPCdecon(decon, FAM, Sampling, num, norMeth)
 }
 
-
-
+# merge different cell type data
+MerRes <- MergeQPCres()
 ```
 
 
