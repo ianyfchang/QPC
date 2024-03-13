@@ -86,6 +86,7 @@ You can install the released version of immunedeconv from [github](https://githu
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
 
+library(immunedeconv)
 library(tibble)
 library(tidyverse)
 library(readr)
