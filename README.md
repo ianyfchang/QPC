@@ -93,6 +93,33 @@ library(readr)
 library(xlsx)                
 ```
 
+### Example            
+```R
+#input reference 
+All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
+
+#input your bulk RNA sequencing
+gene_expression_matrix <- "TCGA_Rawreadcounts.csv"
+df_Source <- "RawCounts"
+
+# make deconvolution results                
+for(k in 1:ncol(All_list)){
+  decon <- All_list[k,1]
+  FAM <- All_list[k,2]
+  Sampling <- All_list[k,3]
+  num <- All_list[k,4]
+  norMeth <- All_list[k,5]
+  print(paste(decon, FAM, Sampling, num, norMeth, sep = "_"))
+  res <- QPCdecon(decon, FAM, Sampling, num, norMeth)
+}
+
+
+
+```
+
+
+
+
 Take a look at the results table
 ```R     
 ##                      TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
