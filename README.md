@@ -103,6 +103,46 @@ sessionInfo()
 ## R version 4.1.3 (2022-03-10)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 10 x64 (build 22631)
+
+## Matrix products: default     
+
+## locale:
+## [1] LC_COLLATE=Chinese (Traditional)_Taiwan.950  LC_CTYPE=Chinese (Traditional)_Taiwan.950   
+## [3] LC_MONETARY=Chinese (Traditional)_Taiwan.950 LC_NUMERIC=C                                
+## [5] LC_TIME=Chinese (Traditional)_Taiwan.950
+
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+
+## other attached packages:
+## [1] edgeR_3.36.0       limma_3.50.3       immunedeconv_2.1.0 EPIC_1.1.6         xlsx_0.6.5        
+## [6] lubridate_1.9.2    forcats_1.0.0      stringr_1.5.1      dplyr_1.1.2        purrr_1.0.1       
+## [11] readr_2.1.4        tidyr_1.3.0        ggplot2_3.4.4      tidyverse_2.0.0    tibble_3.2.1      
+
+## loaded via a namespace (and not attached):
+## [1] nlme_3.1-155           bitops_1.0-7           matrixStats_0.63.0     bit64_4.0.5           
+## [5] filelock_1.0.2         progress_1.2.3         httr_1.4.7             GenomeInfoDb_1.30.1   
+## [9] data.tree_1.1.0        tools_4.1.3            utf8_1.2.3             R6_2.5.1              
+## [13] DBI_1.2.0              BiocGenerics_0.40.0    mgcv_1.8-39            colorspace_2.1-0      
+## [17] mMCPcounter_1.1.0      withr_2.5.2            tidyselect_1.2.0       prettyunits_1.2.0     
+## [21] preprocessCore_1.56.0  bit_4.0.5              curl_5.0.0             compiler_4.1.3        
+## [25] cli_3.6.1              Biobase_2.54.0         xml2_1.3.3             ComICS_1.0.4          
+## [29] scales_1.2.1           genefilter_1.76.0      rappdirs_0.3.3         digest_0.6.31         
+## [33] XVector_0.34.0         pkgconfig_2.0.3        dbplyr_2.3.3           fastmap_1.1.1         
+## [37] readxl_1.4.2           rlang_1.1.0            rstudioapi_0.15.0      RSQLite_2.3.1         
+## [41] generics_0.1.3         testit_0.13            BiocParallel_1.28.3    RCurl_1.98-1.12       
+## [45] magrittr_2.0.3         GenomeInfoDbData_1.2.7 Matrix_1.5-4           Rcpp_1.0.10           
+## [49] munsell_0.5.0          S4Vectors_0.32.4       fansi_1.0.4            lifecycle_1.0.4       
+## [53] stringi_1.7.12         MASS_7.3-55            zlibbioc_1.40.0        BiocFileCache_2.2.1   
+## [57] grid_4.1.3             blob_1.2.4             parallel_4.1.3         crayon_1.5.2          
+## [61] lattice_0.20-45        Biostrings_2.62.0      splines_4.1.3          annotate_1.72.0       
+## [65] xlsxjars_0.6.1         hms_1.1.3              KEGGREST_1.34.0        locfit_1.5-9.7        
+## [69] pillar_1.9.0           biomaRt_2.50.3         stats4_4.1.3           XML_3.99-0.14         
+## [73] glue_1.6.2             remotes_2.4.2.1        png_0.1-8              vctrs_0.6.1           
+## [77] tzdb_0.3.0             cellranger_1.1.0       gtable_0.3.4           cachem_1.0.7          
+## [81] xtable_1.8-4           survival_3.2-13        rJava_1.0-6            AnnotationDbi_1.56.2  
+## [85] memoise_2.0.1          IRanges_2.28.0         sva_3.42.0             timechange_0.2.0      
+
 ```
 
 
