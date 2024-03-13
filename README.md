@@ -93,6 +93,20 @@ library(xlsx)
 ```
 
 
+### Session info     
+```R
+sessionInfo()
+```   
+
+```R
+## R version 4.1.3 (2022-03-10)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 22631)
+```
+
+
+
+
 
 ### Reference
 1. Newman, A.M., Steen, C.B., Liu, C.L. et al. Determining cell type abundance and expression from bulk tissues with digital cytometry. Nat Biotechnol 37, 773–782 (2019). <br> (https://doi.org/10.1038/s41587-019-0114-2)
