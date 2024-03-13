@@ -93,7 +93,7 @@ library(readr)
 library(xlsx)                
 ```
 
-
+Take a look at the results table
 ```R     
 ##                      TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
 ## Dendritic cells              2.88         1.99         0.86         1.74         5.42
