@@ -61,14 +61,14 @@ seurat[["SCT"]]$counts
 
 
 ### RNA-seq data normalization 
-After various analysis, we recommend using Raw counts or TMM normalized sequencing data.
+After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
 An example of the input data in R is shown below.
 ```R
 dim(data)
 [1] 61155    15
-data[1:5,1:5]
+data[1:5,1:5]      
 
-
+# Raw read counts
              TCGA-26-5133  TCGA-HT-7902  TCGA-VM-A8CF  TCGA-14-1823  TCGA-DU-6393
 A1BG-AS1           77           89           38            7           72
 A1CF                0            3            1            0            4
