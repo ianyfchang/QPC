@@ -95,10 +95,10 @@ library(xlsx)
 
 ### Example            
 ```R
-#input reference 
+#input reference table
 All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
 
-#input your bulk RNA sequencing
+#input your bulk RNA sequencing data
 gene_expression_matrix <- "TCGA_Rawreadcounts.csv"
 df_Source <- "RawCounts"
 
