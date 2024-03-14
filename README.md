@@ -93,7 +93,8 @@ library(readr)
 library(xlsx)                
 ```
 
-### Example            
+### Example      
+For this example, we use a dataset of GBM patients from TCGA.
 ```R
 # input reference table
 All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
