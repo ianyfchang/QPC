@@ -33,12 +33,13 @@ To build database, the following steps will be performed:
          
            
 ```R
-# TPM
+# TPM normalized data
 TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
 ```
          
 
 ```R
+# TMM normalized data
 # Convert counts to TMM by EdgeR package
 # Loading required package
 if (!require("BiocManager", quietly = TRUE))
