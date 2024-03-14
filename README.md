@@ -7,21 +7,21 @@ It is for unified access to computational methods for estimating GBM fractions f
 ### About reference database
 To build database, the following steps will be performed:    
 
-1. Define single cell cell-type
+1. Define single cell RNA sequencing cell-type
 
-|Cell Type|
- |---------|
- |Dendritic cells|
- |Endothelial cells| 
- |Macrophage-like GAMs|
- |Microglia-like GAMs| 
- |NKT-like cells|
- |Oligodendrocytes| 
- |T cells |
- |Tumor cells| 
- |B cells|
- |Endothelial cells| 
- |Mural cells|
+     |Cell Type|
+      |---------|
+      |Dendritic cells|
+      |Endothelial cells| 
+      |Macrophage-like GAMs|
+      |Microglia-like GAMs| 
+      |NKT-like cells|
+      |Oligodendrocytes| 
+      |T cells |
+      |Tumor cells| 
+      |B cells|
+      |Endothelial cells| 
+      |Mural cells|
 
 
 2. Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
