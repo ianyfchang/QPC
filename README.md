@@ -25,8 +25,11 @@ To build database, the following steps will be performed:
 
 
 2. Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
+* Raw read counts
 * [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)
-* [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values) 
+* [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)
+* [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)
+* [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
          
          
 [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)      
