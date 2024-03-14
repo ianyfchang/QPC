@@ -31,15 +31,13 @@ To build database, the following steps will be performed:
 * [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
          
-           
+Make TPM normalized data          
 ```R
-# TPM normalized data
 TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
 ```
          
-
+Make TMM normalized data
 ```R
-# TMM normalized data
 # Convert counts to TMM by EdgeR package
 # Loading required package
 if (!require("BiocManager", quietly = TRUE))
@@ -58,7 +56,7 @@ dgelist <- calcNormFactors(dgelist,method = "TMM")
 dgelist <- cpm(dgelist)
 ```
 
-
+Make SCT, LogNormalize and Raw read counts 
 ```R
 # Install sctransform from CRAN
 install.packages("sctransform")
