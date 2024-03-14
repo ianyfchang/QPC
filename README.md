@@ -33,6 +33,7 @@ To build database, the following steps will be performed:
          
            
 ```R
+# TPM
 TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
 ```
          
@@ -56,7 +57,7 @@ dgelist <- calcNormFactors(dgelist,method = "TMM")
 dgelist <- cpm(dgelist)
 ```
 
-[LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html) , [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html) values and raw read counts are stored here. 
+
 ```R
 # Install sctransform from CRAN
 install.packages("sctransform")
