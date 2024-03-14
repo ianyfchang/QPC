@@ -8,7 +8,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 To build database, the following steps will be performed:    
 
 1. Define single cell cell-type 
-
+* * *   
 2. Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
 
          
