@@ -81,7 +81,7 @@ seurat[["SCT"]]$counts
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
-An example of the input data in R is shown below.
+An example of the input data is a gene × sample gene expression matrix in R is shown below.             
 ```R
 dim(data)
 [1] 61155    15
