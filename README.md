@@ -22,7 +22,6 @@ To build database, the following steps will be performed:
       |T cells |
       |Tumor cells| 
       |B cells|
-      |Endothelial cells| 
       |Mural cells|
 
 
