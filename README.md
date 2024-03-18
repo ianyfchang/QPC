@@ -11,7 +11,7 @@ To build database, the following steps will be performed:
 
 1. Define single cell RNA sequencing cell-type
 
-     |**Cell Type**|
+     |Cell Type|
       |---------|
       |Dendritic cells|
       |Endothelial cells| 
