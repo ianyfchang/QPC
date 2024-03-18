@@ -83,8 +83,7 @@ seurat[["SCT"]]$counts
 3. The way for obtain feature genes
  We used two ways to obtain genes, one is all cells 
   
-4. Find all markers for each cell types with different parameters
- We used FindAllMarkers() which is find markers for every cluster compared to all remaining cells in Seurat to find genes.
+4. Find all markers for each cell types with different parameters. We used FindAllMarkers() which is find markers for every cluster compared to all remaining cells in Seurat to find genes.
 ```R
 # Use three parameters for min.pct
 seurat.markers <- FindAllMarkers(seurat,
