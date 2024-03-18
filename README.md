@@ -79,8 +79,9 @@ seurat[["SCT"]]$data
 # Raw read counts
 seurat[["SCT"]]$counts
 ```
-
-
+          
+3. Find all markers for each cell types with different parameters
+ 
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
