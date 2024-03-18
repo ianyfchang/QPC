@@ -85,10 +85,10 @@ seurat[["SCT"]]$counts
   
 4. Find all markers for each cell types with different parameters. We used FindAllMarkers() which is find markers for every cluster compared to all remaining cells in Seurat to find genes.
 ```R
-# Use three parameters for min.pct
+# Use different parameters for min.pct
 seurat.markers <- FindAllMarkers(seurat,
                                  only.pos = TRUE,
-                                 min.pct = 0.2,
+                                 min.pct = 0.2, # 0.2, 0.4, 0.6
                                  logfc.threshold = 0.1,
                                  min.diff.pct = 0.1)
 ```
