@@ -80,8 +80,12 @@ seurat[["SCT"]]$data
 seurat[["SCT"]]$counts
 ```
           
-3. Find all markers for each cell types with different parameters
- 
+3. The way for obtain feature genes
+ We used two ways to obtain genes, one is all cells 
+  
+4. Find all markers for each cell types with different parameters
+
+5. 
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
