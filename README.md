@@ -93,7 +93,7 @@ seurat.markers <- FindAllMarkers(seurat,
                                  min.diff.pct = 0.1)
 ```
 
-6. 
+5. Gene number of each cell type. 
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
