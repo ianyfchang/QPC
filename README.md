@@ -5,8 +5,8 @@ QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions 
 It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.
 
 ### About reference database
+![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig1.png)                   
 
-![image]([Fig1.png](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig1.png))
 To build database, the following steps will be performed:    
 
 1. Define single cell RNA sequencing cell-type
