@@ -10,10 +10,10 @@ It is for unified access to computational methods for estimating GBM fractions f
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 
 
-                    
+                                                                                                                                 
 ### About reference database            
-<center><img src= "https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Fig1.png" alt = "Image" width="800" height="200"></center>
-![image]([https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Fig1.png]#pic_center)
+<center><img src= "https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Fig1.png" alt = "Image" width="210px"></center>
+
 
                                                           
 To build database, the following steps will be performed:    
