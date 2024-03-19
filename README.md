@@ -1,4 +1,4 @@
-# QPC-GBM Deconvolution   
+# **QPC-GBM Deconvolution**   
 ## Overview
 
 QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions of **g**lio**b**lastoma **m**ultiforme cell (GBM) Cell Type from human single cell RNA sequencing data.
