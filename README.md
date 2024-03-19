@@ -57,7 +57,7 @@ dgelist <- calcNormFactors(dgelist,method = "TMM")
 dgelist <- cpm(dgelist)
 ```
 
-Make SCT, LogNormalize and Raw read counts 
+Make SCT, LogNormalize and Raw read counts.To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
 ```R
 # Install sctransform from CRAN
 install.packages("sctransform")
@@ -93,7 +93,7 @@ seurat.markers <- FindAllMarkers(seurat,
                                  min.diff.pct = 0.1)
 ```
 
-5. Gene number of each cell type. 
+5. Use different gene number for each cell type. Filter by different criteria which are expression mean, pct-diff and avg-log2FC.           
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
@@ -169,7 +169,7 @@ Take a look at the results table
 ## Tumor cells                 84.00         0.50        52.57        45.03        58.26
 ## B cells                      0.00         0.01         0.00         0.00         0.00
 ## Mural cells                  1.58         0.00         0.00         3.39         0.00
-## otherCells                   0.00         0.00         0.00         0.00         0.00
+
 
 
 ```
