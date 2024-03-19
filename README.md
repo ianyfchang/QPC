@@ -12,7 +12,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
                     
 ### About reference database
-![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig1.png)                   
+<img src= "https://github.com/ianyfchang/QPC-GBM/blob/master/Fig1.png" alt = "Image" width="400" height="300">                   
 
 To build database, the following steps will be performed:    
 
