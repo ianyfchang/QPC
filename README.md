@@ -57,7 +57,7 @@ dgelist <- calcNormFactors(dgelist,method = "TMM")
 dgelist <- cpm(dgelist)
 ```
 
-Make SCT, LogNormalize and Raw read counts.To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
+Make SCT, LogNormalize and Raw read counts. To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
 ```R
 # Install sctransform from CRAN
 install.packages("sctransform")
@@ -80,20 +80,23 @@ seurat[["SCT"]]$data
 seurat[["SCT"]]$counts
 ```
           
-3. The way for obtain feature genes
- We used two ways to obtain genes, one is all cells 
+3. The method for obtain feature genes. Two cell populations were used to identify the feature genes, one included the whole cell population (ALL), and the other was a 10000-cell population composed from 1000 cells per cell type that showed the smallest distance to the cell type geometric mean on UMAP (MinDist).
   
 4. Find all markers for each cell types with different parameters. We used FindAllMarkers() which is find markers for every cluster compared to all remaining cells in Seurat to find genes. Therefore, we define it as 211, 411 and 611.
 ```R
 # Use different parameters for min.pct
 seurat.markers <- FindAllMarkers(seurat,
                                  only.pos = TRUE,
+                                 assay = "SCT",
+                                 test.use = "wilcox",
+                                 recorrect_umi = FALSE,
                                  min.pct = 0.2, # 0.2, 0.4, 0.6
                                  logfc.threshold = 0.1,
-                                 min.diff.pct = 0.1)
+                                 min.diff.pct = 0.1,
+                                 return.thresh = 0.05)
 ```
 
-5. Use different gene number for each cell type. Filter by different criteria which are expression mean, pct-diff and avg-log2FC.           
+5. Use different gene number including 20,50 and 100 for each cell type. Filter by different criteria which are expression mean, pct-diff and avg-log2FC.           
 
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
