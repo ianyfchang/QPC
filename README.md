@@ -12,9 +12,9 @@ It is for unified access to computational methods for estimating GBM fractions f
 
                     
 ### About reference database            
-<div style="text-align:center">
+<center>
  <img src= "https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Fig1.png" alt = "Image" width="800" height="200">                   
-</div>
+</center>
 
 
                                                           
