@@ -11,7 +11,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
                                                                                                                                  
-### About reference database            
+## About reference database            
                                                                    
 <div align = center><img src= "https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Fig1.png" alt = "Image" width="610px"></div>  
                                                           
