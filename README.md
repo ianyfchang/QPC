@@ -42,6 +42,7 @@ To build database, the following steps will be performed:
          
 Make TPM normalized data          
 ```R
+data <- data/ gene_Length
 TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
 ```
          
