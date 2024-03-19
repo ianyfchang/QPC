@@ -2,8 +2,13 @@
 ## Overview
 
 QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions of **g**lio**b**lastoma **m**ultiforme cell (GBM) Cell Type from human single cell RNA sequencing data.
-It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.
+It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.     
+
+
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
+
+
+                    
 ### About reference database
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig1.png)                   
 
