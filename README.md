@@ -11,9 +11,13 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
                     
-### About reference database
+### About reference database            
+<div style="text-align:center">
 <img src= "https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Fig1.png" alt = "Image" width="800" height="200">                   
+</div>
 
+
+                                                          
 To build database, the following steps will be performed:    
 
 1. Define single cell RNA sequencing cell-type
