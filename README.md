@@ -128,7 +128,7 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("EDASeq")
 
 library(EDASeq)
-gene_Length <- getGeneLengthAndGCContent("WBGene00001042", org, mode=c("biomart", "org.db"))
+gene_Length <- getGeneLengthAndGCContent("ENSG00000012048", org, mode=c("biomart", "org.db"))
 data <- data/ gene_Length
 TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
 ```
