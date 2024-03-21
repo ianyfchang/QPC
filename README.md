@@ -10,6 +10,23 @@ It is for unified access to computational methods for estimating GBM fractions f
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 
 
+
+
+
+### Basic usage
+You can install the released version of immunedeconv from [github](https://github.com/) with:
+```R
+# Loading required package
+install.packages("remotes")
+remotes::install_github("omnideconv/immunedeconv")
+
+library(immunedeconv)
+library(tibble)
+library(tidyverse)
+library(readr)
+library(xlsx)                
+```
+                                    
 ### RNA-seq data normalization 
 After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
 An example of the input data is a gene × sample gene expression matrix in R is shown below.             
@@ -27,22 +44,7 @@ A2M-AS1            26          163           19           29           31
 A2ML1             170          717          290          280          351          
 
 ```
-
-
-### Basic usage
-You can install the released version of immunedeconv from [github](https://github.com/) with:
-```R
-# Loading required package
-install.packages("remotes")
-remotes::install_github("omnideconv/immunedeconv")
-
-library(immunedeconv)
-library(tibble)
-library(tidyverse)
-library(readr)
-library(xlsx)                
-```
-
+                        
 ### Example      
 For this example, we use a dataset of GBM patients from TCGA.
 ```R
