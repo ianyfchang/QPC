@@ -10,6 +10,85 @@ It is for unified access to computational methods for estimating GBM fractions f
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 
 
+### RNA-seq data normalization 
+After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
+An example of the input data is a gene × sample gene expression matrix in R is shown below.             
+```R
+dim(data)
+[1] 61155    15
+data[1:5,1:5]      
+
+# Raw read counts
+             TCGA-26-5133  TCGA-HT-7902  TCGA-VM-A8CF  TCGA-14-1823  TCGA-DU-6393
+A1BG-AS1           77           89           38            7           72
+A1CF                0            3            1            0            4
+A2M             75396        36243        20502        20106        16941
+A2M-AS1            26          163           19           29           31
+A2ML1             170          717          290          280          351          
+
+```
+
+
+### Basic usage
+You can install the released version of immunedeconv from [github](https://github.com/) with:
+```R
+# Loading required package
+install.packages("remotes")
+remotes::install_github("omnideconv/immunedeconv")
+
+library(immunedeconv)
+library(tibble)
+library(tidyverse)
+library(readr)
+library(xlsx)                
+```
+
+### Example      
+For this example, we use a dataset of GBM patients from TCGA.
+```R
+# input reference table
+All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
+
+# input your bulk RNA sequencing data
+gene_expression_matrix <- "TCGA_Rawreadcounts.csv"
+df_Source <- "RawCounts"
+
+# make deconvolution results                
+for(k in 1:ncol(All_list)){
+  decon <- All_list[k,1]
+  FAM <- All_list[k,2]
+  Sampling <- All_list[k,3]
+  num <- All_list[k,4]
+  norMeth <- All_list[k,5]
+  print(paste(decon, FAM, Sampling, num, norMeth, sep = "_"))
+  res <- QPCdecon(decon, FAM, Sampling, num, norMeth)
+}
+
+# merge different cell type data
+MerRes <- MergeQPCres()
+```
+
+
+
+
+Take a look at the results table
+```R     
+##                      TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
+## Dendritic cells              2.88         1.99         0.86         1.74         5.42
+## Endothelial cells           10.06         2.87         4.10         9.72        22.64
+## Macrophage-like GAMs         0.00        11.91        21.18        18.65         0.00
+## Microglia-like GAMs          0.00         0.00         0.00        20.95         0.00
+## NKT-like cells               0.00         0.00         0.00         0.00         0.00
+## Oligodendrocytes             1.49        82.71        21.28         0.53        13.68
+## T cells                      0.00         0.00         0.00         0.00         0.00
+## Tumor cells                 84.00         0.50        52.57        45.03        58.26
+## B cells                      0.00         0.01         0.00         0.00         0.00
+## Mural cells                  1.58         0.00         0.00         3.39         0.00
+
+
+
+```
+                                                                                                                                 
                                                                                                                                  
 ## About reference database            
                                                                    
@@ -107,84 +186,8 @@ seurat.markers <- FindAllMarkers(seurat,
 
 5. Use different gene number including 20,50 and 100 for each cell type. Filter by different criteria which are expression mean, pct-diff and avg-log2FC.           
 
-### RNA-seq data normalization 
-After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
-An example of the input data is a gene × sample gene expression matrix in R is shown below.             
-```R
-dim(data)
-[1] 61155    15
-data[1:5,1:5]      
-
-# Raw read counts
-             TCGA-26-5133  TCGA-HT-7902  TCGA-VM-A8CF  TCGA-14-1823  TCGA-DU-6393
-A1BG-AS1           77           89           38            7           72
-A1CF                0            3            1            0            4
-A2M             75396        36243        20502        20106        16941
-A2M-AS1            26          163           19           29           31
-A2ML1             170          717          290          280          351          
-
-```
 
 
-### Basic usage
-You can install the released version of immunedeconv from [github](https://github.com/) with:
-```R
-# Loading required package
-install.packages("remotes")
-remotes::install_github("omnideconv/immunedeconv")
-
-library(immunedeconv)
-library(tibble)
-library(tidyverse)
-library(readr)
-library(xlsx)                
-```
-
-### Example      
-For this example, we use a dataset of GBM patients from TCGA.
-```R
-# input reference table
-All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
-
-# input your bulk RNA sequencing data
-gene_expression_matrix <- "TCGA_Rawreadcounts.csv"
-df_Source <- "RawCounts"
-
-# make deconvolution results                
-for(k in 1:ncol(All_list)){
-  decon <- All_list[k,1]
-  FAM <- All_list[k,2]
-  Sampling <- All_list[k,3]
-  num <- All_list[k,4]
-  norMeth <- All_list[k,5]
-  print(paste(decon, FAM, Sampling, num, norMeth, sep = "_"))
-  res <- QPCdecon(decon, FAM, Sampling, num, norMeth)
-}
-
-# merge different cell type data
-MerRes <- MergeQPCres()
-```
-
-
-
-
-Take a look at the results table
-```R     
-##                      TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
-## Dendritic cells              2.88         1.99         0.86         1.74         5.42
-## Endothelial cells           10.06         2.87         4.10         9.72        22.64
-## Macrophage-like GAMs         0.00        11.91        21.18        18.65         0.00
-## Microglia-like GAMs          0.00         0.00         0.00        20.95         0.00
-## NKT-like cells               0.00         0.00         0.00         0.00         0.00
-## Oligodendrocytes             1.49        82.71        21.28         0.53        13.68
-## T cells                      0.00         0.00         0.00         0.00         0.00
-## Tumor cells                 84.00         0.50        52.57        45.03        58.26
-## B cells                      0.00         0.01         0.00         0.00         0.00
-## Mural cells                  1.58         0.00         0.00         3.39         0.00
-
-
-
-```
 
 
 ### Session info     
