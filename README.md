@@ -121,6 +121,14 @@ To build database, the following steps will be performed:
          
 Make TPM normalized data          
 ```R
+# Convert counts to TPM by EDASeq package
+# Loading required package
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("EDASeq")
+
+library(EDASeq)
+gene_Length <- getGeneLengthAndGCContent("WBGene00001042", org, mode=c("biomart", "org.db"))
 data <- data/ gene_Length
 TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
 ```
@@ -251,3 +259,4 @@ sessionInfo()
 3. Neftel C, Laffy J, Filbin MG, Hara T et al. An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma. Cell 2019 Aug 8;178(4):835-849.e21. <br> (https://doi.org/10.1016/j.cell.2019.06.024.)
 4. Abdelfattah N, Kumar P, Wang C, Leu JS et al. Single-cell analysis of human glioma and immune cells identifies S100A4 as an immunotherapy target. Nat Commun 2022 Feb 9;13(1):767. <br> (https://doi.org/10.1038/s41467-022-28372-y)
 5. Richards, L.M., Whitley, O.K.N., MacLeod, G. et al. Gradient of Developmental and Injury Response transcriptional states defines functional vulnerabilities underpinning glioblastoma heterogeneity. Nat Cancer 2, 157–173 (2021). <br> (https://doi.org/10.1038/s43018-020-00154-9)
+6. Risso D, Schwartz K, Sherlock G, Dudoit S (2011). “GC-Content Normalization for RNA-Seq Data.” BMC Bioinformatics, 12(1), 480. <br> (https://doi.org/10.1186/1471-2105-12-480)
