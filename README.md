@@ -178,7 +178,7 @@ seurat[["SCT"]]$counts
           
 3. The method for obtain feature genes. Two cell populations were used to identify the feature genes, one included the whole cell population (ALL), and the other was a 10000-cell population composed from 1000 cells per cell type that showed the smallest distance to the cell type geometric mean on UMAP (MinDist).
   
-4. Find all markers for each cell types with different parameters. We used FindAllMarkers() which is find markers for every cluster compared to all remaining cells in Seurat to find genes. Therefore, we define it as 211, 411 and 611.
+4. Find all markers for per cell types with different parameters. We used FindAllMarkers() which is find markers for every cluster compared to all remaining cells in Seurat to find genes. Therefore, we define it as 211, 411 and 611.
 ```R
 # Use different parameters for min.pct
 seurat.markers <- FindAllMarkers(seurat,
@@ -192,7 +192,7 @@ seurat.markers <- FindAllMarkers(seurat,
                                  return.thresh = 0.05)
 ```
 
-5. Use different gene number including 20,50 and 100 for each cell type. Filter by different criteria which are expression mean, pct-diff and avg-log2FC.           
+5. Use different gene number including 20,50 and 100 for per cell type. Filter by different criteria which are expression mean, pct-diff and avg-log2FC.           
 
 
 
