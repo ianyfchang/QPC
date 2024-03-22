@@ -194,14 +194,8 @@ seurat.markers <- FindAllMarkers(seurat,
                                  return.thresh = 0.05)
 ```
 
-5. Use different gene number including 20,50 and 100 for per cell type. Select values by different criteria which are expression mean, pct-diff and avg-log2FC.           
-```R
-gene_n <- 20 #20, 50, 100
-data <- data %>% group_by(cellType) %>%
-  top_n(gene_n*4, target_expression_mean) %>%  
-  top_n(gene_n*2, pct.diff) %>%
-  top_n(gene_n, avg_log2FC)
-```
+5. Use different feature gene number including 20,50 and 100 for per cell type. Select values by smallest Adjusted p-value(p_val_adj), target expression mean, pct-diff and log fold-change of the average expression(avg-log2FC).           
+
                                                                             
 
 
