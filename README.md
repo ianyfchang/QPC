@@ -194,7 +194,7 @@ seurat.markers <- FindAllMarkers(seurat,
                                  return.thresh = 0.05)
 ```
 
-5. Use different feature gene number including 20,50 and 100 for per cell type. Select values by smallest Adjusted p-value(p_val_adj), target expression mean, genes that show a  difference in the fraction of detection between the two groups(pct-diff) and log fold-change of the average expression(avg-log2FC).           
+5. Use different feature gene number including 20,50 and 100 for per cell type. Select values by smallest Adjusted p-value (p_val_adj), target expression mean, genes that show a  difference in the fraction of detection between the two groups (pct-diff) and log fold-change of the average expression (avg-log2FC).           
 
                                                                             
 
