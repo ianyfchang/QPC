@@ -53,18 +53,13 @@ All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
 
 # input your bulk RNA sequencing data
 gene_expression_matrix <- "TCGA_Rawreadcounts.csv"
-df_Source <- "RawCounts"
+
+#input reference db
+ref_list <- "C:/Users/Monkey/Desktop/QPC-GBM/Reference_db/Reference_GSE182109_10celltype_211_ALL_n20_LogNormalize_Cibersort.csv"
+
 
 # make deconvolution results                
-for(k in 1:ncol(All_list)){
-  decon <- All_list[k,1]
-  FAM <- All_list[k,2]
-  Sampling <- All_list[k,3]
-  num <- All_list[k,4]
-  norMeth <- All_list[k,5]
-  print(paste(decon, FAM, Sampling, num, norMeth, sep = "_"))
-  res <- QPCdecon(decon, FAM, Sampling, num, norMeth)
-}
+DeRes <- QPCdecon()
 
 # merge different cell type data
 MerRes <- MergeQPCres()
