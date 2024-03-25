@@ -16,7 +16,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 The workflow for this analysis is adapted from the following sources:           
 * [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
 * [EPIC](https://epic.gfellerlab.org/)
-* ConsensusTME
+* [ConsensusTME](https://github.com/cansysbio/ConsensusTME)
 
 ### Basic usage
 You can install the released version of immunedeconv from [github](https://github.com/) with:
@@ -261,3 +261,4 @@ sessionInfo()
 6. Risso D, Schwartz K, Sherlock G, Dudoit S (2011). “GC-Content Normalization for RNA-Seq Data.” BMC Bioinformatics, 12(1), 480. <br> (https://doi.org/10.1186/1471-2105-12-480)
 7. Chen B, Khodadoust MS, Liu CL, Newman AM, Alizadeh AA. Profiling Tumor Infiltrating Immune Cells with CIBERSORT. Methods Mol Biol. 2018;1711:243-259.PMID: 29344893; PMCID: PMC5895181. <br> (https://doi.org/10.1007/978-1-4939-7493-1_12)
 8. Racle, J., Gfeller, D. (2020). EPIC: A Tool to Estimate the Proportions of Different Cell Types from Bulk Gene Expression Data. In: Boegel, S. (eds) Bioinformatics for Cancer Immunotherapy. Methods in Molecular Biology, vol 2120. Humana, New York, NY. <br> (https://doi.org/10.1007/978-1-0716-0327-7_17)
+9. Alejandro Jiménez-Sánchez, Oliver Cast, Martin L. Miller; Comprehensive Benchmarking and Integration of Tumor Microenvironment Cell Estimation Methods. Cancer Res 15 December 2019; 79 (24): 6238–6246. <br>(https://doi.org/10.1158/0008-5472.CAN-18-3560)
