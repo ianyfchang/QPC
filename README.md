@@ -10,10 +10,8 @@ It is for unified access to computational methods for estimating GBM fractions f
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 <br>
 <br>
-### Workflow of build QPC-GBM Deconvolution                                         
-
-1. 
-2. Cell type identification: 
+### Workflow of build QPC-GBM Deconvolution                                          
+1. Using scRNA-seq dataset and define multiple Cell type: 
      |Cell Type|
       |---------|
       |Dendritic cells|
@@ -26,7 +24,8 @@ It is for unified access to computational methods for estimating GBM fractions f
       |Tumor cells| 
       |B cells|
       |Mural cells|
-3. Building matrices:
+<br>
+2. Building matrices:
 
 
 
