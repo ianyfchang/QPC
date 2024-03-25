@@ -14,7 +14,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 The workflow for this analysis is adapted from the following sources:           
-* CIBERSORTx [cibersort website](https://cibersortx.stanford.edu/).                                                                                  
+* [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
 * EPIC
 * ConsensusTME
 
