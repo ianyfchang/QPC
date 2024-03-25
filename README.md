@@ -13,8 +13,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 ### Workflow of build QPC-GBM Deconvolution                                          
 1. Using scRNA-seq dataset and define multiple Cell type: 
-
-<br>                                       
+                                    
 
      |Cell Type|
       |---------|
