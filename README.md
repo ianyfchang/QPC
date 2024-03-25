@@ -4,10 +4,14 @@
 QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions of **g**lio**b**lastoma **m**ultiforme cell (GBM) Cell Type from human single cell RNA sequencing data.
 It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.     
                          
-<br>                                      
+<br>     
+
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
+
 <br>
 <br>
+
+
 ### Workflow of build QPC-GBM Deconvolution                                          
 1. Using scRNA-seq dataset and define multiple Cell type: 
 <br>
