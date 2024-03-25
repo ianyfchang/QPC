@@ -11,9 +11,9 @@ It is for unified access to computational methods for estimating GBM fractions f
 <br>
 <br>
 ### Workflow of build QPC-GBM Deconvolution                                         
+1. 
 
-
-The workflow for this analysis is adapted from the following sources:           
+5. Using different deconvolution methods:           
 * [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
 * [EPIC](https://epic.gfellerlab.org/)
 * [ConsensusTME](https://github.com/cansysbio/ConsensusTME)
