@@ -8,12 +8,15 @@ It is for unified access to computational methods for estimating GBM fractions f
                     
                       
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
-                                                      
+<br>
+<br>
+### Workflow of create QPC-GBM                                         
+
 
 The workflow for this analysis is adapted from the following sources:           
-CIBERSORTx is an analytical tool  to imput gene expression profiles and provide an estimation of the abundances of member cell types in a mixed cell population, using gene expression data.It is only freely available for academic users and could not be directly included in this package. To use CIBERSORT with this package, you need to register on the [cibersort website](https://cibersortx.stanford.edu/).                                                                                  
-
-
+* CIBERSORTx [cibersort website](https://cibersortx.stanford.edu/).                                                                                  
+* EPIC
+* ConsensusTME
 
 ### Basic usage
 You can install the released version of immunedeconv from [github](https://github.com/) with:
