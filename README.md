@@ -36,19 +36,19 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 
-4. 
-5. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:           
+3. 
+4. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:           
 * [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
 * [EPIC](https://epic.gfellerlab.org/)
 * [ConsensusTME](https://github.com/cansysbio/ConsensusTME)
 
-6. 
+5. 
 
-7. Scoring by two methods:
+6. Scoring by two methods:
 * The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
 * Pearson correlation coefficient (r) is a number between –1 and 1 that measures the strength and direction of the relationship between two variables.
 <br>
-8. 
+7. 
 
 
 ### Basic usage
