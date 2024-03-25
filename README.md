@@ -28,6 +28,8 @@ It is for unified access to computational methods for estimating GBM fractions f
       |Tumor cells| 
       |B cells|
       |Mural cells|
+
+                          
 <br>
 2. Building matrices:
 
