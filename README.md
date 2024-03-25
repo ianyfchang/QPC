@@ -9,7 +9,6 @@ It is for unified access to computational methods for estimating GBM fractions f
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 
 <br>
-<br>
 
 
 ### Workflow of build QPC-GBM Deconvolution                                          
