@@ -48,14 +48,11 @@ A2ML1             170          717          290          280          351
 ### Example      
 For this example, we use a dataset of GBM patients from TCGA.
 ```R
-# input reference table
-All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
-
 # input your bulk RNA sequencing data
 gene_expression_matrix <- "TCGA_Rawreadcounts.csv"
 
 #input reference db
-ref_list <- "C:/Users/Monkey/Desktop/QPC-GBM/Reference_db/Reference_GSE182109_10celltype_211_ALL_n20_LogNormalize_Cibersort.csv"
+ref_list <- "Reference_GSE182109_10celltype_211_ALL_n20_LogNormalize_Cibersort.csv"
 
 
 # make deconvolution results                
