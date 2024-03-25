@@ -26,7 +26,11 @@ It is for unified access to computational methods for estimating GBM fractions f
       |Tumor cells| 
       |B cells|
       |Mural cells|
-3. 
+3. Building matrices:
+
+
+
+4. 
 5. Using different deconvolution methods:           
 * [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
 * [EPIC](https://epic.gfellerlab.org/)
