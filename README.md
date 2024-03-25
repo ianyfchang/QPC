@@ -36,6 +36,15 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [EPIC](https://epic.gfellerlab.org/)
 * [ConsensusTME](https://github.com/cansysbio/ConsensusTME)
 
+6. 
+
+7. Scoring by two methods:
+* The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
+* Pearson correlation coefficient (r) is a number between –1 and 1 that measures the strength and direction of the relationship between two variables.
+<br>
+8. 
+
+
 ### Basic usage
 You can install the released version of immunedeconv from [github](https://github.com/) with:
 ```R
