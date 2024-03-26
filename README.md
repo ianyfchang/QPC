@@ -28,7 +28,7 @@ It is for unified access to computational methods for estimating GBM fractions f
       |Mural cells|   
                                 
 
-3. Building reference matrix and bulk RNA matrix:
+3. Building reference matrix and bulk RNA matrix from scRNA-seq dataset:
 
 
 
