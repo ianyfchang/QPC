@@ -45,8 +45,12 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 <br>  
-  The methods for transformation
-
+  The methods for Psudo bulk RNA Normalized 
+* TMM
+* TPM
+* logTPM
+* RPKM
+* 
 
 4. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:           
 * [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
