@@ -44,7 +44,8 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)
 * [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
-<br>                                                            
+<br>
+
   The methods for Psudo bulk RNA Normalized 
 * TMM
 * TPM
