@@ -40,7 +40,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 
   
-  The methods for Psudo bulk RNA-seq Normalization 
+  The methods for Psudo bulk RNA-seq normalization 
 * TMM
 * TPM
 * logTPM
@@ -57,10 +57,9 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
 * [EPIC](https://epic.gfellerlab.org/)
 * [ConsensusTME](https://github.com/cansysbio/ConsensusTME)
+ 
 
-5. 
-
-6. Scoring with two methods that is RMSE and PearsonR, then select each cell type with the best score.
+5. Scoring with two methods that is RMSE and PearsonR, then select each cell type with the best score.
 * The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
 * Pearson correlation coefficient (r) is a number between –1 and 1 that measures the strength and direction of the relationship between two variables.
   
