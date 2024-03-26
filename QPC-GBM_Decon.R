@@ -2,7 +2,6 @@
 
 #' @param gene_expression_matrix could use TMM normalized and Rawcounts
 #' @param ref_list gene expression from isolated cells, or a matrix of expression profile of cells.
-#' @param df_source put your data source (Rawcounts or TMM)
 #' @param Perm Set permutations for statistical analysis (≥100 permutations recommended).
 #' @param QN boolean. Wheter to quantile normalize the data. Data should be normalized.
 #' @param absolute Set to TRUE for CIBERSORT absolute mode.
@@ -11,23 +10,18 @@
 #Deconvolute using CIBERSORT and Immunedeconv  
 source("~/CIBERSORT_modified.R")
 
-
-
-#main function
-QPCdecon <- function(decon, FAM, Sampling, num, norMeth){
-  ref_list <- list.files(path = paste0("~/"),pattern = paste0("Reference_GSE182109_11celltype_",FAM,"_",Sampling,"_n",num,"_",norMeth,collapse="|"),full.names = T,recursive = T)
-
-  
+QPCdecon <- function(){
   lapply(gene_expression_matrix, function(filename){
-    datafile <- read_csv(filename) %>% as.data.frame() %>% column_to_rownames("gene_name")
+    datafile <- read_csv(filename) %>% as.data.frame() 
+    row.names(datafile) <- datafile$...1
     datafile$...1 <- NULL
-    datafile$gene_name <- NULL
     
     lapply(ref_list, function(ref_file){
       ref_datafile <- read_csv(ref_file) %>% as.data.frame() %>% column_to_rownames("...1")
       print(ref_file)
       fam <- sapply(strsplit(ref_file, "_"), "[", 5)
       sampling_chr <- sapply(strsplit(ref_file, "_"), "[", 6)
+      Var <- sapply(strsplit(sapply(strsplit(ref_file, "_"), "[", 9), "[.]"), "[", 1)
       
       if (sampling_chr == "DatasetWhole") {
         sampling <- paste0(sapply(strsplit(ref_file, "_"), "[", 6),"_",sapply(strsplit(ref_file, "_"), "[", 7))
@@ -41,7 +35,7 @@ QPCdecon <- function(decon, FAM, Sampling, num, norMeth){
         norMeth <- sapply(strsplit(sapply(strsplit(ref_file, "_"), "[", 8), "[.]"), "[", 1)
       }
       
-      if (decon == "Cibersort") {
+      if (Var == "Cibersort") {
         dec_df <- CIBERSORT(mixture_file = datafile,
                             sig_matrix = ref_datafile,
                             perm = 100,
@@ -59,29 +53,22 @@ QPCdecon <- function(decon, FAM, Sampling, num, norMeth){
         dec_df <- as.data.frame(dec_df)
         df <- round(dec_df * 100, digits = 2)
       }
-      write.csv(df, paste0("~/DeconRes_ref_",fam,sampling,num,norMeth,"_",df_source,"_",decon,".csv"))
-      print(paste0("~/DeconRes_ref_",fam,sampling,num,norMeth,"_",df_source,"_",decon,".csv"))
+      write.csv(df, paste0("C:/Users/Monkey/Desktop/DeconRes_ref_.csv"))
+      print(paste0("C:/Users/Monkey/Desktop/DeconRes_ref_.csv"))
       gc()
     })
   })
 }
 
-#input reference 
-All_list <- read.xlsx("~/Ref_compisition.xlsx", sheetName = "sheet1")
 
 #input your bulk RNA sequencing
-gene_expression_matrix <- "~/Sample/TCGA_rawreadcounts_15.csv"
-df_Source <- "your data source"
+gene_expression_matrix <- "~/Sample/TCGA_Rawreadcounts.csv"
 
-for(k in 1:ncol(All_list)){
-  decon <- All_list[k,1]
-  FAM <- All_list[k,2]
-  Sampling <- All_list[k,3]
-  num <- All_list[k,4]
-  norMeth <- All_list[k,5]
-  print(paste(decon, FAM, Sampling, num, norMeth, sep = "_"))
-  res <- QPCdecon(decon, FAM, Sampling, num, norMeth)
-}
+#input reference db
+ref_list <- "C:/Users/Monkey/Desktop/QPC-GBM/Reference_db/Reference_GSE182109_10celltype_211_ALL_n20_LogNormalize_Cibersort.csv"
+
+
+DeRes <- QPCdecon()
 
 #Merge result ==============================
 MergeQPCres <- function(){
@@ -137,8 +124,8 @@ MergeQPCres <- function(){
     re_res[,i] <- NA
     re_res[,i] <- round(combine_res[,i]/sum(combine_res[,i]),digits = 4)*100
   }
-  write.csv(re_res, file = paste0("~/DeconRes_ref_Best_mix_",df_source,"_CibersortEPIC.csv"))
-  print(paste0("~/DeconRes_ref_Best_mix_",df_source,"_CibersortEPIC.csv"))
+  write.csv(re_res, file = paste0("~/DeconRes_ref_Best_mix_CibersortEPIC.csv"))
+  print(paste0("~/DeconRes_ref_Best_mix_CibersortEPIC.csv"))
   
   
 }
