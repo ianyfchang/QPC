@@ -38,13 +38,13 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 3. Data normalization and transformation:
 
-  The methods for normalization
+    The methods for normalization
 * Raw read counts
 * [TPM](https://link.springer.com/article/10.1007/s12064-012-0162-3) (Transcripts per million)
 * [TMM](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) (Trimmed mean of M-values)
 * [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
-  
+<br>  
   The methods for transformation
 
 
