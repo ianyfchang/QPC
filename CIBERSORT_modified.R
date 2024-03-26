@@ -221,7 +221,7 @@ CIBERSORT <- function(sig_matrix, mixture_file, perm=0, QN=TRUE, absolute=FALSE,
       out <- c(colnames(Y)[itor],w,pval,mix_r,mix_rmse)
       if(absolute) out <- c(out, sum(w))
       data.frame(out)
-    },mc.cores=45)
+    },mc.cores=1)
   )
   
   #save results
