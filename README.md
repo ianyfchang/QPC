@@ -45,9 +45,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 5. 
 
 6. Scoring and merge best result:                                      
-
-
-  Scoring with two methods that is RMSE and PearsonR, then select each cell type with the best score.
+   Scoring with two methods that is RMSE and PearsonR, then select each cell type with the best score.
 * The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
 * Pearson correlation coefficient (r) is a number between –1 and 1 that measures the strength and direction of the relationship between two variables.
 <br>
