@@ -5,13 +5,13 @@ QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions 
 It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.     
                          
 <br>     
-
+### Workflow of build QPC-GBM Deconvolution   
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 
 <br>
 
 
-### Workflow of build QPC-GBM Deconvolution                                          
+                                       
 1. Using scRNA-seq dataset and define multiple Cell type: 
                                     
 
