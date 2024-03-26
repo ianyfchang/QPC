@@ -46,7 +46,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 <br>
 
-  The methods for Psudo bulk RNA Normalized 
+  The methods for Psudo bulk RNA-seq Normalized 
 * TMM
 * TPM
 * logTPM
@@ -148,8 +148,12 @@ To build database, the following steps will be performed:
 
 1. Define single cell RNA sequencing cell-type
 
-2. Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.
-
+2. Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.                                      
+* Raw read counts
+* TPM
+* TMM
+* LogNormalize
+* SCT
          
 Make TPM normalized data          
 ```R
