@@ -45,7 +45,62 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [LogNormalize](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 <br>
+Make TPM normalized data          
+```R
+# Convert counts to TPM by EDASeq package
+# Loading required package
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("EDASeq")
 
+library(EDASeq)
+gene_Length <- getGeneLengthAndGCContent(gene_list, org, mode=c("biomart", "org.db"))
+data <- data/ gene_Length
+TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
+```
+         
+Make TMM normalized data
+```R
+# Convert counts to TMM by EdgeR package
+# Loading required package
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("edgeR")
+
+library(edgeR)
+
+# make the DGEList:
+dgelist <- DGEList(counts = data, group = colnames(data))
+keep <- rowSums(cpm(dgelist )>1) >= 2
+dgelist <- dgelist[keep, keep.lib.sizes=FALSE]
+# calculate TMM normalization factors
+dgelist <- calcNormFactors(dgelist,method = "TMM")
+# get the normalized counts
+dgelist <- cpm(dgelist)
+```
+
+Make SCT, LogNormalize and Raw read counts. To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
+```R
+# Install sctransform from CRAN
+install.packages("sctransform")
+
+
+library(Seurat)
+library(sctransform)
+
+seurat <- CreateSeuratObject(counts = seurat_data)
+# run sctransform
+seurat <- SCTransform(seurat, vars.to.regress = "percent.mt", verbose = FALSE)
+
+# SCT normalized data
+seurat[["SCT"]]$scale.data
+
+# LogNormalize data
+seurat[["SCT"]]$data
+
+# Raw read counts
+seurat[["SCT"]]$counts
+```
   The methods for Psudo bulk RNA-seq Normalized 
 * TMM
 * TPM
@@ -155,62 +210,7 @@ To build database, the following steps will be performed:
 * LogNormalize
 * SCT
          
-Make TPM normalized data          
-```R
-# Convert counts to TPM by EDASeq package
-# Loading required package
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("EDASeq")
 
-library(EDASeq)
-gene_Length <- getGeneLengthAndGCContent(gene_list, org, mode=c("biomart", "org.db"))
-data <- data/ gene_Length
-TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
-```
-         
-Make TMM normalized data
-```R
-# Convert counts to TMM by EdgeR package
-# Loading required package
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("edgeR")
-
-library(edgeR)
-
-# make the DGEList:
-dgelist <- DGEList(counts = data, group = colnames(data))
-keep <- rowSums(cpm(dgelist )>1) >= 2
-dgelist <- dgelist[keep, keep.lib.sizes=FALSE]
-# calculate TMM normalization factors
-dgelist <- calcNormFactors(dgelist,method = "TMM")
-# get the normalized counts
-dgelist <- cpm(dgelist)
-```
-
-Make SCT, LogNormalize and Raw read counts. To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
-```R
-# Install sctransform from CRAN
-install.packages("sctransform")
-
-
-library(Seurat)
-library(sctransform)
-
-seurat <- CreateSeuratObject(counts = seurat_data)
-# run sctransform
-seurat <- SCTransform(seurat, vars.to.regress = "percent.mt", verbose = FALSE)
-
-# SCT normalized data
-seurat[["SCT"]]$scale.data
-
-# LogNormalize data
-seurat[["SCT"]]$data
-
-# Raw read counts
-seurat[["SCT"]]$counts
-```
           
 3. The method for obtain feature genes. Two cell populations were used to identify the feature genes, one included the whole cell population (ALL), and the other was a 10000-cell population composed from 1000 cells per cell type that showed the smallest distance to the cell type geometric mean on UMAP (MinDist).
   
