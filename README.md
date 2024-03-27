@@ -12,7 +12,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
                                        
-1. define 10 Cell types by Using scRNA-seq dataset: 
+1. Define 10 Cell types by Using scRNA-seq dataset: 
 
     |Cell Type|
       |---------|
