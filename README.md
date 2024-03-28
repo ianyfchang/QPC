@@ -113,7 +113,7 @@ For this example, we use a dataset of GBM patients from TCGA.
 ```R
 
 # make deconvolution results                
-DeRes <- QPCdecon(gene_expression_matrix_path,ref_list_path)
+DeRes <- QPCdecon(gene_expression_matrix_path,ref_path)
 
 # merge different cell type data
 MerRes <- MergeQPCres()
