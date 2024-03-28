@@ -56,13 +56,13 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 3. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:
-
   ```R      
   CIBERSORTx                                                                                
   EPIC
   ConsensusTME
   ```
 
+   
 (https://cibersortx.stanford.edu/)  
 (https://epic.gfellerlab.org/)
 (https://github.com/cansysbio/ConsensusTME)
