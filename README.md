@@ -38,16 +38,11 @@ It is for unified access to computational methods for estimating GBM fractions f
     The methods for single cell reference dataset normalization
 ```R
 Raw read counts                                     
-TPM(Transcripts per million)                                 
-TMM(Trimmed mean of M-values)                                     
+TPM                                
+TMM                                   
 LogNormalize                                                 
 SCT                                                        
 ```
-
-(https://link.springer.com/article/10.1007/s12064-012-0162-3)       
-(https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25) 
-(https://satijalab.org/seurat/articles/sctransform_vignette.html)   
-(https://satijalab.org/seurat/articles/sctransform_vignette.html)  
 
 
   
