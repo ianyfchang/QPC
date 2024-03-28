@@ -40,16 +40,17 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 
   
-  The methods for Psudo bulk RNA-seq normalization 
-* TMM
-* TPM
-* logTPM
-* RPKM
-* ntd
-* vst
-* NormCount
-* RawCount
-
+  The methods for Psudo bulk RNA-seq normalization
+<br>  
+TMM
+TPM
+logTPM
+RPKM
+ntd
+vst
+NormCount
+RawCount
+<br>
 
 
 
