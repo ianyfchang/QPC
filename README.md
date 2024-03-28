@@ -55,11 +55,18 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 
-3. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:           
-* [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
-* [EPIC](https://epic.gfellerlab.org/)
-* [ConsensusTME](https://github.com/cansysbio/ConsensusTME)
- 
+3. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:
+```R      
+CIBERSORTx                                                                                
+EPIC
+ConsensusTME
+```
+
+(https://cibersortx.stanford.edu/)  
+(https://epic.gfellerlab.org/)
+(https://github.com/cansysbio/ConsensusTME)
+
+
 
 4. Scoring with two methods that is RMSE and PearsonR, then select each cell type with the best score.
 * The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
