@@ -157,7 +157,7 @@ To build database, the following steps will be performed:
 2. Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.                                      
 
          
-Make TPM normalized data          
+Generation TPM normalized data          
 ```R
 # Convert counts to TPM by EDASeq package
 # Loading required package
@@ -171,7 +171,7 @@ data <- data/ gene_Length
 TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
 ```
          
-Make TMM normalized data
+Generation TMM normalized data
 ```R
 # Convert counts to TMM by EdgeR package
 # Loading required package
@@ -191,7 +191,7 @@ dgelist <- calcNormFactors(dgelist,method = "TMM")
 dgelist <- cpm(dgelist)
 ```
 
-Make SCT, LogNormalize and Raw read counts. To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
+Generation SCT, LogNormalize and Raw read counts. To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
 ```R
 # Install sctransform from CRAN
 install.packages("sctransform")
