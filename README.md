@@ -26,6 +26,20 @@ It is for unified access to computational methods for estimating GBM fractions f
       |Tumor cells| 
       |B cells|
       |Mural cells|   
+
+```R
+      Dendritic cells                                   
+      Endothelial cells                                
+      Macrophage-like GAMs                           
+      Microglia-like GAMs                               
+      NKT-like cells                                   
+      Oligodendrocytes                                      
+      T cells                                 
+      Tumor cells                                    
+      B cells                                
+      Mural cells                               
+```
+
                                 
 
 3. Building reference matrix and bulk RNA matrix from scRNA-seq dataset and normalization:
