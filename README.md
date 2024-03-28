@@ -41,7 +41,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
   
   The methods for Psudo bulk RNA-seq normalization
-<br>  
+```R 
 TMM
 TPM
 logTPM
@@ -50,7 +50,7 @@ ntd
 vst
 NormCount
 RawCount
-<br>
+```
 
 
 
