@@ -29,8 +29,8 @@ It is for unified access to computational methods for estimating GBM fractions f
 
                                 
 
-2. Building reference matrix and bulk RNA matrix from scRNA-seq dataset and normalization:
-...* The methods for single cell reference dataset normalization
+2. Building reference matrix and bulk RNA matrix from scRNA-seq dataset and normalization:                                         
+- The methods for single cell reference dataset normalization
   ```R
   Raw read counts                                     
   TPM                                
