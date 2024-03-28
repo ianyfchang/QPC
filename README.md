@@ -35,7 +35,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 
-    The methods for single cell reference dataset normalization
+The methods for single cell reference dataset normalization
 ```R
 Raw read counts                                     
 TPM                                
