@@ -40,7 +40,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 * [SCT](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 
   
-  The methods for Psudo bulk RNA-seq normalization
+The methods for Psudo bulk RNA-seq normalization
 ```R 
 TMM
 TPM
