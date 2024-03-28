@@ -10,7 +10,7 @@
 #Deconvolute using CIBERSORT and Immunedeconv  
 source("~/CIBERSORT_modified.R")
 
-QPCdecon <- function(){
+QPCdecon <- function(gene_expression_matrix,ref_list){
   lapply(gene_expression_matrix, function(filename){
     datafile <- read_csv(filename) %>% as.data.frame() 
     row.names(datafile) <- datafile$...1
@@ -65,10 +65,10 @@ QPCdecon <- function(){
 gene_expression_matrix <- "~/Sample/TCGA_Rawreadcounts.csv"
 
 #input reference db
-ref_list <- "C:/Users/Monkey/Desktop/QPC-GBM/Reference_db/Reference_GSE182109_10celltype_211_ALL_n20_LogNormalize_Cibersort.csv"
+ref_list <- "~/Reference_db/Reference_GSE182109_10celltype_211_ALL_n20_LogNormalize_Cibersort.csv"
 
 
-DeRes <- QPCdecon()
+DeRes <- QPCdecon(gene_expression_matrix,ref_list)
 
 #Merge result ==============================
 MergeQPCres <- function(){
