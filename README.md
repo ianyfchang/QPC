@@ -8,12 +8,10 @@ It is for unified access to computational methods for estimating GBM fractions f
 ### Workflow of build QPC-GBM Deconvolution   
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 
-
-
-
                                        
-1.Define 10 Cell types by Using scRNA-seq dataset: 
+1. Define 10 Cell types by Using scRNA-seq dataset: 
 
+                                              
     |Cell Type|
       |---------|
       |Dendritic cells|
@@ -31,7 +29,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
                                 
 
-3. Building reference matrix and bulk RNA matrix from scRNA-seq dataset and normalization:
+2. Building reference matrix and bulk RNA matrix from scRNA-seq dataset and normalization:
 
   The methods for single cell reference dataset normalization
   ```R
@@ -58,13 +56,13 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 
-4. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:           
+3. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:           
 * [CIBERSORTx](https://cibersortx.stanford.edu/).                                                                                  
 * [EPIC](https://epic.gfellerlab.org/)
 * [ConsensusTME](https://github.com/cansysbio/ConsensusTME)
  
 
-5. Scoring with two methods that is RMSE and PearsonR, then select each cell type with the best score.
+4. Scoring with two methods that is RMSE and PearsonR, then select each cell type with the best score.
 * The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
 * Pearson correlation coefficient (r) is a number between –1 and 1 that measures the strength and direction of the relationship between two variables.
   
