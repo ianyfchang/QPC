@@ -9,7 +9,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
 
                                        
-1. Define 10 Cell types by Using scRNA-seq dataset: 
+1. Define 10 Cell types by using scRNA-seq dataset: 
 
                                               
     |Cell Type|
@@ -56,7 +56,7 @@ It is for unified access to computational methods for estimating GBM fractions f
 
 
 3. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:
-- Deconvolution methods                                    
+- Deconvolution methods                                                                                                                                                   
   ```R      
   CIBERSORTx                                                                                
   EPIC
