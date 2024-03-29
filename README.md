@@ -59,11 +59,11 @@ It is for unified access to computational methods for estimating GBM fractions f
 
                                                                                                                                                   
                                                                                                        
-  ```R      
-  CIBERSORT                                                                                
-  EPIC
-  ConsensusTME
-  ```
+      ```R      
+      CIBERSORT                                                                                
+      EPIC
+      ConsensusTME
+      ```
 *  CIBERSORT and ConsensusTME are the methods which provided an estimation of the abundances of non-cancerous cell populations in a mixed cell population by using gene expression data. CIBERSORT cab be run online, you need to register on the cibersort [website](https://cibersortx.stanford.edu/).  
 *  EPIC algorithm which computes a score for proportion of tumor-infiltrating non-malignant cell types of a sample has been implemented.
 
