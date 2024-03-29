@@ -62,10 +62,10 @@ It is for unified access to computational methods for estimating GBM fractions f
   EPIC
   ConsensusTME
   ```
-  CIBERSORTx is a method which provided an estimation of the abundances of member cell types in a mixed cell population, using gene expression data.
+  CIBERSORT is a method which provided an estimation of the abundances of member cell types in a mixed cell population, using gene expression data. To use CIBERSORT with this package, you need to register on the cibersort [website](https://cibersortx.stanford.edu/), obtain a license, and download the CIBERSORT source code.
   
    
-(https://cibersortx.stanford.edu/)  
+
 (https://epic.gfellerlab.org/)
 (https://github.com/cansysbio/ConsensusTME)
 
