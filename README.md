@@ -64,14 +64,13 @@ It is for unified access to computational methods for estimating GBM fractions f
   EPIC
   ConsensusTME
   ```
-*  CIBERSORT and ConsensusTME are the methods which provided an estimation of the abundances of non-cancerous cell populations in a mixed cell population by using gene expression data. CIBERSORT cab be run online, you need to register on the cibersort [website](https://cibersortx.stanford.edu/).
-  
+*  CIBERSORT and ConsensusTME are the methods which provided an estimation of the abundances of non-cancerous cell populations in a mixed cell population by using gene expression data. CIBERSORT cab be run online, you need to register on the cibersort [website](https://cibersortx.stanford.edu/).  
 *  EPIC algorithm which computes a score for proportion of tumor-infiltrating non-malignant cell types of a sample has been implemented.
 
 
-
-
-
+                             
+                              
+                                     
 4. Scoring with two methods that is **RMSE** and **PearsonR**, then select each cell type with the best score.
 * The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
 * Pearson correlation coefficient (r) is a number between –1 and 1 that measures the strength and direction of the relationship between two variables.
