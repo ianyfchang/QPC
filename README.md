@@ -1,84 +1,36 @@
 # QPC-GBM Deconvolution   
-## Overview
 
-QPC-GBM is a computational pipeline for the **Q**uantifying the **P**roportions of **g**lio**b**lastoma **m**ultiforme cell (GBM) Cell Type from human single cell RNA sequencing data.
-It is for unified access to computational methods for estimating GBM fractions from bulk RNA sequencing data.     
+
+The **Q**uantifying the **P**roportion of **C**ell - **G**lioblastoma (QPC-GBM) is a computational deconvolution method for estimating cell type proportions in bulk RNA from GBM samples. The 10 cell types used in QPC-GBM are defined and characterized from three public scRNA-seq datasets ([GSE182109](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182109) [1], [GSE131928](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131928) [2], and the NC dataset by Richards, et al. [3]). Each cell type proportion is measured using different reference matrices with deconvolution tools of either CIBERSORT or EPIC, followed by combining each result and re-scaling to get the final cell type proportions. The method could be applied to bulk RNA-seq data generated from both poly(A) and exome capture RNA sequencing. Bulk RNA-seq data of raw count gives best deconvolution performance, whereas TMM and log normalized readcount using DESeq2 also show good results.
                          
      
-### Workflow of build QPC-GBM Deconvolution   
-![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/fig.jpg)
+![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Github_fig.jpg)
 
                                        
-1. Define 10 Cell types by using scRNA-seq dataset: 
-
-                                              
-    |Cell Type|
-      |---------|
-      |Dendritic cells|
-      |Endothelial cells| 
-      |Macrophage-like GAMs|
-      |Microglia-like GAMs| 
-      |NKT-like cells|
-      |Oligodendrocytes| 
-      |T cells |
-      |Tumor cells| 
-      |B cells|
-      |Mural cells|   
+## Cell types in QPC-GBM 
+| Cell Type | Feature Genes
+| --------- | --------------
+|Dendritic cells|CD1D, FCER1A
+|Endothelial cells|FLT1, PECAM1, VWF
+|Macrophage-like GAMs|CD68, CD163
+|Microglia-like GAMs|TMEM119, CX3CR1
+|NKT-like cells|CD3E, NKG7
+|Oligodendrocytes|PLP1, NKX6-2
+|T cells |CD3E, IL7R
+|Tumor cells|GAP43, PTPRZ1
+|B cells|MS4A1, CD79A
+|Mural cells|DCN, COL1A2
 
 
-
-                                
-
-2. Building reference matrix and bulk RNA matrix from scRNA-seq dataset and normalization:                                         
-- The methods for single cell reference dataset normalization
-  ```R
-  Raw read counts                                     
-  TPM                                
-  TMM                                   
-  LogNormalize                                                 
-  SCT                                                        
-  ```
+## Deconvolution methods used by QPC-GBM
+| Tool | Algorithm | Reference
+| ---- | --------- | ----------
+| [CIBERSORT](https://cibersortx.stanford.edu/) | &#965;-suppport vector regression | Newman et al. (2015) [4]
+| [EPIC](https://cibersortx.stanford.edu/) | constrained least square regression | Racle et al. (2020) [5]
 
 
-  
-- The methods for Psudo bulk RNA-seq normalization
-  ```R 
-  TMM
-  TPM
-  logTPM
-  RPKM
-  ntd
-  vst
-  NormCount
-  RawCount
-  ```
-
-
-
-3. Using different deconvolution methods for estimate the proportion of the different cell types from gene expression data:
-
-                                                                                                                                                  
-                                                                                                       
-      ```R      
-      CIBERSORT                                                                                
-      EPIC
-      ConsensusTME
-      ```
-*  CIBERSORT and ConsensusTME are the methods which provided an estimation of the abundances of non-cancerous cell populations in a mixed cell population by using gene expression data. CIBERSORT cab be run online, you need to register on the cibersort [website](https://cibersortx.stanford.edu/).  
-*  EPIC algorithm which computes a score for proportion of tumor-infiltrating non-malignant cell types of a sample has been implemented.
-
-
-                             
-                              
-                                     
-4. Scoring with two methods that is **RMSE** and **PearsonR**, then select each cell type with the best score.
-* The Root Mean Squared Error (RMSE) measures the average difference between values predicted and the actual values by a model. It provides an estimation of how well the model is able to predict the target value.
-* Pearson correlation coefficient (r) is a number between –1 and 1 that measures the strength and direction of the relationship between two variables.
-  
-
-
-### Basic usage
-You can install the released version of immunedeconv from [github](https://github.com/) with:
+## Before performing QPC-GBM deconvolution
+### Packages required for running QPC-GBM
 ```R
 # Loading required package
 install.packages("remotes")
@@ -91,9 +43,9 @@ library(readr)
 library(xlsx)                
 ```
                                     
-### RNA-seq data normalization 
-After various analysis, we recommend using Raw read counts or TMM normalized sequencing data.
-An example of the input data is a gene × sample gene expression matrix in R is shown below.             
+### Input bulk RNA-seq normalization 
+Raw read count without transformation or data transformed by TMM or log normalization are recommend to be used for QPC-GBM deconvolution.
+An example of the input data is shown below: a gene × sample gene expression matrix.             
 ```R
 dim(data)
 [1] 61155    15
@@ -108,8 +60,9 @@ A2M-AS1            26          163           19           29           31
 A2ML1             170          717          290          280          351          
 
 ```
-                        
-### Example      
+
+
+## Peforming QPC-GBM deconvolution      
 For this example, we use a dataset of GBM patients from TCGA.
 ```R
 
@@ -292,13 +245,18 @@ sessionInfo()
 
 
 
-### Reference
+## References
+1. Abdelfattah N, et al. Single-cell analysis of human glioma and immune cells identifies S100A4 as an immunotherapy target. Nat Commun 13, 767 (2022).
+2. Neftel C, et al. An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma. Cell 178, 835-849 e821 (2019).
+3. Richards LM, et al. Gradient of Developmental and Injury Response transcriptional states defines functional vulnerabilities underpinning glioblastoma heterogeneity. Nat Cancer 2, 157-173 (2021).
+4. Newman AM, et al. Robust enumeration of cell subsets from tissue expression profiles. Nat Methods 12, 453-457 (2015).
+5. Racle J, Gfeller D. EPIC: A Tool to Estimate the Proportions of Different Cell Types from Bulk Gene Expression Data. Methods Mol Biol 2120, 233-248 (2020).
 1. Newman, A.M., Steen, C.B., Liu, C.L. et al. Determining cell type abundance and expression from bulk tissues with digital cytometry. Nat Biotechnol 37, 773–782 (2019). <br> (https://doi.org/10.1038/s41587-019-0114-2)
-2. Sturm, G., Finotello, F., Petitprez, F., Zhang, J. D., Baumbach, J., Fridman, W. H., List, M., Aneichyk, T. (2019).Comprehensive evaluation of transcriptome-based cell-type quantification methods for immuno-oncology.Bioinformatics, 35(14), i436-i445.  <br>(https://doi.org/10.1093/bioinformatics/btz363)
-3. Neftel C, Laffy J, Filbin MG, Hara T et al. An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma. Cell 2019 Aug 8;178(4):835-849.e21. <br> (https://doi.org/10.1016/j.cell.2019.06.024.)
-4. Abdelfattah N, Kumar P, Wang C, Leu JS et al. Single-cell analysis of human glioma and immune cells identifies S100A4 as an immunotherapy target. Nat Commun 2022 Feb 9;13(1):767. <br> (https://doi.org/10.1038/s41467-022-28372-y)
-5. Richards, L.M., Whitley, O.K.N., MacLeod, G. et al. Gradient of Developmental and Injury Response transcriptional states defines functional vulnerabilities underpinning glioblastoma heterogeneity. Nat Cancer 2, 157–173 (2021). <br> (https://doi.org/10.1038/s43018-020-00154-9)
-6. Risso D, Schwartz K, Sherlock G, Dudoit S (2011). “GC-Content Normalization for RNA-Seq Data.” BMC Bioinformatics, 12(1), 480. <br> (https://doi.org/10.1186/1471-2105-12-480)
-7. Chen B, Khodadoust MS, Liu CL, Newman AM, Alizadeh AA. Profiling Tumor Infiltrating Immune Cells with CIBERSORT. Methods Mol Biol. 2018;1711:243-259.PMID: 29344893; PMCID: PMC5895181. <br> (https://doi.org/10.1007/978-1-4939-7493-1_12)
-8. Racle, J., Gfeller, D. (2020). EPIC: A Tool to Estimate the Proportions of Different Cell Types from Bulk Gene Expression Data. In: Boegel, S. (eds) Bioinformatics for Cancer Immunotherapy. Methods in Molecular Biology, vol 2120. Humana, New York, NY. <br> (https://doi.org/10.1007/978-1-0716-0327-7_17)
-9. Alejandro Jiménez-Sánchez, Oliver Cast, Martin L. Miller; Comprehensive Benchmarking and Integration of Tumor Microenvironment Cell Estimation Methods. Cancer Res 15 December 2019; 79 (24): 6238–6246. <br>(https://doi.org/10.1158/0008-5472.CAN-18-3560)
+3. Sturm, G., Finotello, F., Petitprez, F., Zhang, J. D., Baumbach, J., Fridman, W. H., List, M., Aneichyk, T. (2019).Comprehensive evaluation of transcriptome-based cell-type quantification methods for immuno-oncology.Bioinformatics, 35(14), i436-i445.  <br>(https://doi.org/10.1093/bioinformatics/btz363)
+4. Neftel C, Laffy J, Filbin MG, Hara T et al. An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma. Cell 2019 Aug 8;178(4):835-849.e21. <br> (https://doi.org/10.1016/j.cell.2019.06.024.)
+5. Abdelfattah N, Kumar P, Wang C, Leu JS et al. Single-cell analysis of human glioma and immune cells identifies S100A4 as an immunotherapy target. Nat Commun 2022 Feb 9;13(1):767. <br> (https://doi.org/10.1038/s41467-022-28372-y)
+6. Richards, L.M., Whitley, O.K.N., MacLeod, G. et al. Gradient of Developmental and Injury Response transcriptional states defines functional vulnerabilities underpinning glioblastoma heterogeneity. Nat Cancer 2, 157–173 (2021). <br> (https://doi.org/10.1038/s43018-020-00154-9)
+7. Risso D, Schwartz K, Sherlock G, Dudoit S (2011). “GC-Content Normalization for RNA-Seq Data.” BMC Bioinformatics, 12(1), 480. <br> (https://doi.org/10.1186/1471-2105-12-480)
+8. Chen B, Khodadoust MS, Liu CL, Newman AM, Alizadeh AA. Profiling Tumor Infiltrating Immune Cells with CIBERSORT. Methods Mol Biol. 2018;1711:243-259.PMID: 29344893; PMCID: PMC5895181. <br> (https://doi.org/10.1007/978-1-4939-7493-1_12)
+9. Racle, J., Gfeller, D. (2020). EPIC: A Tool to Estimate the Proportions of Different Cell Types from Bulk Gene Expression Data. In: Boegel, S. (eds) Bioinformatics for Cancer Immunotherapy. Methods in Molecular Biology, vol 2120. Humana, New York, NY. <br> (https://doi.org/10.1007/978-1-0716-0327-7_17)
+10. Alejandro Jiménez-Sánchez, Oliver Cast, Martin L. Miller; Comprehensive Benchmarking and Integration of Tumor Microenvironment Cell Estimation Methods. Cancer Res 15 December 2019; 79 (24): 6238–6246. <br>(https://doi.org/10.1158/0008-5472.CAN-18-3560)
