@@ -33,6 +33,12 @@ The **Q**uantifying the **P**roportion of **C**ell - **G**lioblastoma (QPC-GBM) 
 ### Packages required for running QPC-GBM
 ```R
 # Loading required package
+# For CIBERSORT
+library(e1071)
+library(parallel)
+library(preprocessCore)
+
+# For QPC-GBM
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
 
@@ -63,21 +69,70 @@ A2ML1             170          717          290          280          351
 
 
 ## Peforming QPC-GBM deconvolution      
-For this example, we use a dataset of GBM patients from TCGA.
+For example, we use a bulk RNA-seq dataset of TCGA-GBM.
+### Example dataset
 ```R
+# Download example dataset
+library (readr)
+urlfile <- "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Sample/TCGA_Rawreadcounts.csv"
+mydata <- read_csv(url(urlfile)) %>% as.data.frame() %>% column_to_rownames("...1")
 
-# make deconvolution results                
-DeRes <- QPCdecon(gene_expression_matrix_path,ref_path)
+# load functions
+source("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/R/CIBERSORT_modified.R")
+source("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/R/QPC_GBM_main.R")
 
-# merge different cell type data
-MerRes <- MergeQPCres()
+```
+### Reference matrices
+```R
+# Download reference matrices
+ref_path <- c("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_DC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_EC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MP_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MGTumor_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_NKT_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_Oligo_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_TC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_BC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MC_ori.csv")
+ref_List <- lapply(ref_path, function(x) read_csv(x) %>% as.data.frame() %>% column_to_rownames("...1"))
+names(ref_List) <- c("DC","EC","MP","MGTumor","NKT","Oligo","TC","BC","MC")
+remove(ref_path)
+
+## Please do not change the order of the references
+## The SCTransform was used to normalize and transform the reference matriced for deconvolution aimed to estimated the proportions
+## of dendritice cells and macrophage-like GAMs. The referenc matrices contain negative values that may cause errors when performing
+## deconvolution using CIBERSORT. If the errors occurred at the run of dendritic cells or macrophage-like GAMs, you can replace the
+## two reference matrices with the modified ones and try again.
+
+# Download modified reference matrices
+ref_path <- c("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_DC_mod.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_EC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MP_mod.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MGTumor_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_NKT_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_Oligo_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_TC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_BC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MC_ori.csv")
+ref_List <- lapply(ref_path, function(x) read_csv(x) %>% as.data.frame() %>% column_to_rownames("...1"))
+names(ref_List) <- c("DC","EC","MP","MGTumor","NKT","Oligo","TC","BC","MC")
+remove(ref_path)
+
 ```
 
+### Running QPC-GBM
+Enter the expression matrix (raw count, TMM, or Lognormalization) and the reference list.
+```R
+# run deconvolution                
+DeRes <- QPCdecon(ex_matrix, ref_List)
 
+## The function returns a cell type proportion table and save a "QPC_GBM_result.csv" file
+```
 
-
-Take a look at the results table
-```R     
+## QPC-GBM results   
+```R
+DeRes <- QPCdecon(mydata, ref_list)
+  
 ##                      TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
 ## Dendritic cells              2.88         1.99         0.86         1.74         5.42
 ## Endothelial cells           10.06         2.87         4.10         9.72        22.64
@@ -95,102 +150,10 @@ Take a look at the results table
 ```
 
                                                                                                                                  
-If your Bulk RNA data is generated by other Normaliztion methods and RawCount or TMM-Normalizd is not available, please contact the contributor.                                                                                                                                 
-                                                                                                                                 
-## About reference database            
-                                                                   
-<div align = center><img src= "https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Fig1.png" alt = "Image" width="610px"></div>  
-                                                          
-To build database, the following steps will be performed:    
-
-1. Define single cell RNA sequencing cell-type
- 
-
-                                                                              
-
-2. Of all Reference database, we used single cell RNA sequecing in four normalized methods for test which methods are standard and widely used in scRNA-seq analysis. If you use this pipeline in your work, please cite both our paper and the method(s) you are using.                                      
-
-         
-Generation TPM normalized data          
-```R
-# Convert counts to TPM by EDASeq package
-# Loading required package
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("EDASeq")
-
-library(EDASeq)
-gene_Length <- getGeneLengthAndGCContent(gene_list, org, mode=c("biomart", "org.db"))
-data <- data/ gene_Length
-TPM <- as.data.frame(t( t(data) / apply(data, 2, sum, na.rm = TRUE) ) * 1e6)
-```
-         
-Generation TMM normalized data
-```R
-# Convert counts to TMM by EdgeR package
-# Loading required package
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("edgeR")
-
-library(edgeR)
-
-# make the DGEList:
-dgelist <- DGEList(counts = data, group = colnames(data))
-keep <- rowSums(cpm(dgelist )>1) >= 2
-dgelist <- dgelist[keep, keep.lib.sizes=FALSE]
-# calculate TMM normalization factors
-dgelist <- calcNormFactors(dgelist,method = "TMM")
-# get the normalized counts
-dgelist <- cpm(dgelist)
-```
-
-Generation SCT, LogNormalize and Raw read counts. To obtain these data, we will be mainly using functions available in the Seurat package. Apart from Seurat package, we also need sctransform package which as a more accurate method of normalizing, estimating the variance of the raw filtered data.                       
-```R
-# Install sctransform from CRAN
-install.packages("sctransform")
+If your Bulk RNA data was generated by normaliztion methods other than raw count, TMM, or lognormalization, please contact the contributor for additional information.
 
 
-library(Seurat)
-library(sctransform)
-
-seurat <- CreateSeuratObject(counts = seurat_data)
-# run sctransform
-seurat <- SCTransform(seurat, vars.to.regress = "percent.mt", verbose = FALSE)
-
-# SCT normalized data
-seurat[["SCT"]]$scale.data
-
-# LogNormalize data
-seurat[["SCT"]]$data
-
-# Raw read counts
-seurat[["SCT"]]$counts
-```
-          
-3. The method for obtain feature genes. Two cell populations were used to identify the feature genes, one included the whole cell population (ALL), and the other was a 10000-cell population composed from 1000 cells per cell type that showed the smallest distance to the cell type geometric mean on UMAP (MinDist).
-  
-4. Find all markers for per cell types with different parameters. We used FindAllMarkers() which is find markers for every cluster compared to all remaining cells in Seurat to find genes. Therefore, we define it as 211, 411 and 611.
-```R
-# Use different parameters for min.pct
-seurat.markers <- FindAllMarkers(seurat,
-                                 only.pos = TRUE,
-                                 assay = "SCT",
-                                 test.use = "wilcox",
-                                 recorrect_umi = FALSE,
-                                 min.pct = 0.2, # 0.2, 0.4, 0.6
-                                 logfc.threshold = 0.1,
-                                 min.diff.pct = 0.1,
-                                 return.thresh = 0.05)
-```
-
-5. Use different feature gene number including 20,50 and 100 for per cell type. Select values by smallest Adjusted p-value (p_val_adj), target expression mean, genes that show a  difference in the fraction of detection between the two groups (pct-diff) and log fold-change of the average expression (avg-log2FC).           
-
-                                                                            
-
-
-
-### Session info     
+## Session info     
 ```R
 sessionInfo()
 ```   
@@ -242,21 +205,9 @@ sessionInfo()
 ```
 
 
-
-
-
 ## References
 1. Abdelfattah N, et al. Single-cell analysis of human glioma and immune cells identifies S100A4 as an immunotherapy target. Nat Commun 13, 767 (2022).
 2. Neftel C, et al. An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma. Cell 178, 835-849 e821 (2019).
 3. Richards LM, et al. Gradient of Developmental and Injury Response transcriptional states defines functional vulnerabilities underpinning glioblastoma heterogeneity. Nat Cancer 2, 157-173 (2021).
 4. Newman AM, et al. Robust enumeration of cell subsets from tissue expression profiles. Nat Methods 12, 453-457 (2015).
 5. Racle J, Gfeller D. EPIC: A Tool to Estimate the Proportions of Different Cell Types from Bulk Gene Expression Data. Methods Mol Biol 2120, 233-248 (2020).
-1. Newman, A.M., Steen, C.B., Liu, C.L. et al. Determining cell type abundance and expression from bulk tissues with digital cytometry. Nat Biotechnol 37, 773–782 (2019). <br> (https://doi.org/10.1038/s41587-019-0114-2)
-3. Sturm, G., Finotello, F., Petitprez, F., Zhang, J. D., Baumbach, J., Fridman, W. H., List, M., Aneichyk, T. (2019).Comprehensive evaluation of transcriptome-based cell-type quantification methods for immuno-oncology.Bioinformatics, 35(14), i436-i445.  <br>(https://doi.org/10.1093/bioinformatics/btz363)
-4. Neftel C, Laffy J, Filbin MG, Hara T et al. An Integrative Model of Cellular States, Plasticity, and Genetics for Glioblastoma. Cell 2019 Aug 8;178(4):835-849.e21. <br> (https://doi.org/10.1016/j.cell.2019.06.024.)
-5. Abdelfattah N, Kumar P, Wang C, Leu JS et al. Single-cell analysis of human glioma and immune cells identifies S100A4 as an immunotherapy target. Nat Commun 2022 Feb 9;13(1):767. <br> (https://doi.org/10.1038/s41467-022-28372-y)
-6. Richards, L.M., Whitley, O.K.N., MacLeod, G. et al. Gradient of Developmental and Injury Response transcriptional states defines functional vulnerabilities underpinning glioblastoma heterogeneity. Nat Cancer 2, 157–173 (2021). <br> (https://doi.org/10.1038/s43018-020-00154-9)
-7. Risso D, Schwartz K, Sherlock G, Dudoit S (2011). “GC-Content Normalization for RNA-Seq Data.” BMC Bioinformatics, 12(1), 480. <br> (https://doi.org/10.1186/1471-2105-12-480)
-8. Chen B, Khodadoust MS, Liu CL, Newman AM, Alizadeh AA. Profiling Tumor Infiltrating Immune Cells with CIBERSORT. Methods Mol Biol. 2018;1711:243-259.PMID: 29344893; PMCID: PMC5895181. <br> (https://doi.org/10.1007/978-1-4939-7493-1_12)
-9. Racle, J., Gfeller, D. (2020). EPIC: A Tool to Estimate the Proportions of Different Cell Types from Bulk Gene Expression Data. In: Boegel, S. (eds) Bioinformatics for Cancer Immunotherapy. Methods in Molecular Biology, vol 2120. Humana, New York, NY. <br> (https://doi.org/10.1007/978-1-0716-0327-7_17)
-10. Alejandro Jiménez-Sánchez, Oliver Cast, Martin L. Miller; Comprehensive Benchmarking and Integration of Tumor Microenvironment Cell Estimation Methods. Cancer Res 15 December 2019; 79 (24): 6238–6246. <br>(https://doi.org/10.1158/0008-5472.CAN-18-3560)
