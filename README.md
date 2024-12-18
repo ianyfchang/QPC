@@ -120,7 +120,7 @@ remove(ref_path)
 
 ```
 
-### Running QPC-GBM
+### Running GBM deconvolution
 Enter the expression matrix (raw count, TMM, or Lognormalization) and the reference list.
 ```R
 # run deconvolution                
