@@ -1,7 +1,7 @@
 # Optimal Deconvolution for GBM   
 
 
-This is a computational deconvolution method for estimating cell type proportions in bulk RNA from GBM samples. The 10 cell types used in QPC-GBM are defined and characterized from three public scRNA-seq datasets ([GSE182109](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182109) [1], [GSE131928](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131928) [2], and the NC dataset by Richards, et al. [3]). Each cell type proportion is measured using different reference matrices with deconvolution tools of either CIBERSORT or EPIC, followed by combining each result and re-scaling to get the final cell type proportions. The method could be applied to bulk RNA-seq data generated from both poly(A) and exome capture RNA sequencing. Bulk RNA-seq data of raw count gives best deconvolution performance, whereas TMM and log normalized readcount using DESeq2 also show good results.
+This is a computational deconvolution method for estimating cell type proportions in bulk RNA from GBM samples. The 10 cell types used in optimal deconvolution are defined and characterized from three public scRNA-seq datasets ([GSE182109](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182109) [1], [GSE131928](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131928) [2], and the NC dataset by Richards, et al. [3]). Each cell type proportion is measured using different reference matrices with deconvolution tools of either CIBERSORT or EPIC, followed by combining each result and re-scaling to get the final cell type proportions. The method could be applied to bulk RNA-seq data generated from both poly(A) and exome capture RNA sequencing. Bulk RNA-seq data of raw count gives best deconvolution performance, whereas TMM and log normalized readcount using DESeq2 also show good results.
                          
      
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Github_fig.jpg)
@@ -22,15 +22,15 @@ This is a computational deconvolution method for estimating cell type proportion
 |Mural cells|DCN, COL1A2
 
 
-## Deconvolution methods used by QPC-GBM
+## Deconvolution methods used by GBM deconvolution
 | Tool | Algorithm | Reference
 | ---- | --------- | ----------
 | [CIBERSORT](https://cibersortx.stanford.edu/) | &#965;-suppport vector regression | Newman et al. (2015) [4]
 | [EPIC](https://cibersortx.stanford.edu/) | constrained least square regression | Racle et al. (2020) [5]
 
 
-## Before performing QPC-GBM deconvolution
-### Packages required for running QPC-GBM
+## Before performing GBM deconvolution
+### Packages required for running deconvolution
 ```R
 # Loading required package
 # For CIBERSORT
@@ -38,7 +38,7 @@ library(e1071)
 library(parallel)
 library(preprocessCore)
 
-# For QPC-GBM
+# For GBM deconvolution
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
 
@@ -50,7 +50,7 @@ library(xlsx)
 ```
                                     
 ### Input bulk RNA-seq normalization 
-Raw read count without transformation or data transformed by TMM or log normalization are recommend to be used for QPC-GBM deconvolution.
+Raw read count without transformation or data transformed by TMM or log normalization are recommend to be used for GBM deconvolution.
 An example of the input data is shown below: a gene × sample gene expression matrix.             
 ```R
 dim(data)
@@ -68,7 +68,7 @@ A2ML1             170          717          290          280          351
 ```
 
 
-## Peforming QPC-GBM deconvolution      
+## Peforming GBM deconvolution      
 For example, we use a bulk RNA-seq dataset of TCGA-GBM.
 ### Example dataset
 ```R
