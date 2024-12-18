@@ -1,13 +1,13 @@
 # Optimal Deconvolution for GBM   
 
 
-The **Q**uantifying the **P**roportion of **C**ell - **G**lioblastoma (QPC-GBM) is a computational deconvolution method for estimating cell type proportions in bulk RNA from GBM samples. The 10 cell types used in QPC-GBM are defined and characterized from three public scRNA-seq datasets ([GSE182109](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182109) [1], [GSE131928](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131928) [2], and the NC dataset by Richards, et al. [3]). Each cell type proportion is measured using different reference matrices with deconvolution tools of either CIBERSORT or EPIC, followed by combining each result and re-scaling to get the final cell type proportions. The method could be applied to bulk RNA-seq data generated from both poly(A) and exome capture RNA sequencing. Bulk RNA-seq data of raw count gives best deconvolution performance, whereas TMM and log normalized readcount using DESeq2 also show good results.
+This is a computational deconvolution method for estimating cell type proportions in bulk RNA from GBM samples. The 10 cell types used in QPC-GBM are defined and characterized from three public scRNA-seq datasets ([GSE182109](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182109) [1], [GSE131928](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131928) [2], and the NC dataset by Richards, et al. [3]). Each cell type proportion is measured using different reference matrices with deconvolution tools of either CIBERSORT or EPIC, followed by combining each result and re-scaling to get the final cell type proportions. The method could be applied to bulk RNA-seq data generated from both poly(A) and exome capture RNA sequencing. Bulk RNA-seq data of raw count gives best deconvolution performance, whereas TMM and log normalized readcount using DESeq2 also show good results.
                          
      
 ![image](https://github.com/ianyfchang/QPC-GBM/blob/master/Fig/Github_fig.jpg)
 
                                        
-## Cell types in QPC-GBM 
+## Cell types in GBM deconvolution
 | Cell Type | Feature Genes
 | --------- | --------------
 |Dendritic cells|CD1D, FCER1A
