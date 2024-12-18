@@ -74,12 +74,12 @@ For example, we use a bulk RNA-seq dataset of TCGA-GBM.
 ```R
 # Download example dataset
 library (readr)
-urlfile <- "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Sample/TCGA_Rawreadcounts.csv"
+urlfile <- "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Sample/TCGA_Rawreadcounts.csv"
 mydata <- read_csv(url(urlfile)) %>% as.data.frame() %>% column_to_rownames("...1")
 
 # load functions
-source("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/R/CIBERSORT_modified.R")
-source("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/R/QPC_GBM_main.R")
+source("https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/R/CIBERSORT_modified.R")
+source("https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/R/QPC_GBM_main.R")
 
 ```
 ### Reference matrices
