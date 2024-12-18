@@ -85,15 +85,15 @@ source("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/R/QPC_GBM_ma
 ### Reference matrices
 ```R
 # Download reference matrices
-ref_path <- c("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_DC_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_EC_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MP_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MGTumor_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_NKT_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_Oligo_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_TC_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_BC_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MC_ori.csv")
+ref_path <- c("https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_DC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_EC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_MP_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_MGTumor_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_NKT_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_Oligo_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_TC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blobmaster/Reference_DB/Reference_BC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchangOptimal-GBM/blob/master/Reference_DB/Reference_MC_ori.csv")
 ref_List <- lapply(ref_path, function(x) read_csv(x) %>% as.data.frame() %>% column_to_rownames("...1"))
 names(ref_List) <- c("DC","EC","MP","MGTumor","NKT","Oligo","TC","BC","MC")
 remove(ref_path)
@@ -105,15 +105,15 @@ remove(ref_path)
 ## two reference matrices with the modified ones and try again.
 
 # Download modified reference matrices
-ref_path <- c("https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_DC_mod.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_EC_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MP_mod.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MGTumor_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_NKT_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_Oligo_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_TC_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_BC_ori.csv",
-              "https://raw.githubusercontent.com/ianyfchang/QPC-GBM/master/Reference_DB/Reference_MC_ori.csv")
+ref_path <- c("https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_DC_mod.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_EC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_MP_mod.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_MGTumor_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_NKT_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_Oligo_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_TC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_BC_ori.csv",
+              "https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/Reference_DB/Reference_MC_ori.csv")
 ref_List <- lapply(ref_path, function(x) read_csv(x) %>% as.data.frame() %>% column_to_rownames("...1"))
 names(ref_List) <- c("DC","EC","MP","MGTumor","NKT","Oligo","TC","BC","MC")
 remove(ref_path)
