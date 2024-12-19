@@ -1,5 +1,7 @@
+#Install immunedeconv from CRAN
 install.packages("remotes")
 remotes::install_github("omnideconv/immunedeconv")
+
 library(SeuratDisk)
 library(SeuratData)
 library(sctransform)
@@ -32,7 +34,8 @@ library(scCustomize)
 library(qs)
 library(Matrix)
 
-#NatureCancer=====
+#Make three dataset seurat object
+#1--NatureCancer=====
 GBM.data <- read_csv("~/data/Richards_NatureCancer_GBM_scRNAseq_counts.csv") %>% as.data.frame()
 row.names(GBM.data) <- GBM.data[,1] %>% as.vector()
 GBM.data$'...1' <- NULL
@@ -45,7 +48,7 @@ VlnPlot(seurat_ob, features = c("nFeature_RNA",
                                 "nCount_RNA", 
                                 "percent.mt"), ncol = 3)
 
-#GSE131928=====
+#2--GSE131928=====
 cells1_proc <- read_csv("~data/GSE131928/cells1.proc.tsv", col_names = FALSE) %>% as.data.frame()
 cells2_proc <- read_csv("~data/GSE131928/cells2.proc.tsv", col_names = FALSE) %>% as.data.frame()
 genes1 <- read_delim("~data/GSE131928/genes1.tsv", delim = "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE) %>% as.data.frame()
@@ -76,7 +79,7 @@ VlnPlot(seurat_ob, features = c("nFeature_RNA",
                                 "percent.mt"), ncol = 3)
 
 
-#GSE182109 without "LGG-04" ,"LGG-03", "ndGBM-11","ndGBM-10"=====
+#3--GSE182109 without "LGG-04" ,"LGG-03", "ndGBM-11","ndGBM-10"=====
 count <- Matrix::readMM("~data/GSE182109/matrix.mtx") %>% as.matrix() %>% as.data.frame()
 barcodes <- read_csv("~data/GSE182109/barcodes.tsv", 
                      col_names = FALSE) %>% as.data.frame()
@@ -110,7 +113,7 @@ seurat_ob <- AddMetaData(
   col.name = c("Patient")
 )
 
-#SCTransform------------------------------------------------------------------------------------------------------
+#Runnning sctransform on a Seurat object------------------------------------------------------------------------------------------------------
 library(future)
 plan("sequential", workers = 24) 
 options(future.globals.maxSize= 20000 * 1024^2)
