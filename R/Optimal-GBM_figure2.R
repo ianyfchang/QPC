@@ -652,7 +652,7 @@ Pear$...1 <- NULL
 best_df <- RMSE[grep(pattern = "Best", row.names(RMSE)),-c(49:52)] %>% as.data.frame()
 best_df <- rbind(best_df,Pear[grep(pattern = "Best", row.names(Pear)),-c(49:52)] %>% as.data.frame()) %>% as.data.frame()
 
-best_df$DeconMeth <- "QPC"
+best_df$DeconMeth <- "OptGBM"
 best_df$Min.pct <- "Mix"
 best_df$Sampling <- "Mix"
 best_df$GeneNumber <- "Mix"
@@ -671,16 +671,16 @@ mergetable$ReverseRMSE100_NC <- 100/mergetable$SumUp_NC
 mergetable$ReverseRMSE100_GSE131928 <- 100/mergetable$SumUp_GSE131928
 mergetable$ReverseRMSE100_GSE182109 <- 100/mergetable$SumUp_GSE182109
 
-#RawCount only single and QPC RMSE curves
+#RawCount only single and Optimal-GBM RMSE curves
 fileinuse <- mergetable[which(mergetable$Value=="RMSE" & mergetable$BulkNorm=="RawCount"),] %>% as.data.frame()
 fileinuse$DeconMeth_new <- "Others"
-fileinuse$DeconMeth_new[which(fileinuse$DeconMeth=="QPC")] <- "QPC"
+fileinuse$DeconMeth_new[which(fileinuse$DeconMeth=="OptGBM")] <- "OptGBM"
 
 readcount <- data.frame(Reads = c(661398,6470143,15654576,35271068,484578,4771431,11641601,26415269,724815,6799343,15417500,30508074,718100,7154899,17779601,42080465),
                         Datasets = c(rep("Merge",4),rep("NC",4),rep("GSE131928",4),rep("GSE182109",4)),
                         BulkCellNumber = c(100,1000,2500,6000,100,1000,2500,6000,100,1000,2500,6000,100,1000,2500,6000))
 readcount <- rbind(readcount,readcount) %>% as.data.frame()
-readcount$DeconMeth_new <- c(rep("Others",16),rep("QPC",16))
+readcount$DeconMeth_new <- c(rep("Others",16),rep("OptGBM",16))
 
 fileinuse2 <- fileinuse[,c("ReverseRMSE100_MergeDataset","ReverseRMSE100_NC","ReverseRMSE100_GSE131928","ReverseRMSE100_GSE182109","BulkCellNumber","DeconMeth_new")] %>% as.data.frame()
 fileinuse2 <- fileinuse2 %>% group_by(BulkCellNumber, DeconMeth_new) %>% summarise_all(mean) %>% as.data.frame()
@@ -721,17 +721,17 @@ p1 <- ggplot(readcount2[-which(readcount2$Datasets=="Merge"),], aes(x = Reads, y
         legend.title = element_text(color = "black", size = 14)) 
 
 p1
-#RawCount only single and QPC and each cell type RMSE/PearsonR--------------------------------------------------------------------------------------
+#RawCount only single and Optimal-GBM and each cell type RMSE/PearsonR--------------------------------------------------------------------------------------
 #mergetable from above
 fileinuse <- mergetable[which(mergetable$BulkNorm=="RawCount"),
                         c(grep(pattern = "MergeDataset",colnames(mergetable)),49:57)] %>% as.data.frame()
 colnames(fileinuse) <- str_remove(colnames(fileinuse),pattern = "_MergeDataset")
 fileinuse <- fileinuse[,-which(colnames(fileinuse) %in% c("otherCells","ReverseRMSE100","BulkRNA"))] %>% as.data.frame()
 
-QPC_temp <- fileinuse[which(fileinuse$DeconMeth=="QPC"),] %>% as.data.frame()
-Others_temp_RMSE <- fileinuse[-which(fileinuse$DeconMeth=="QPC"),] %>% as.data.frame()
+OptGBM_temp <- fileinuse[which(fileinuse$DeconMeth=="OptGBM"),] %>% as.data.frame()
+Others_temp_RMSE <- fileinuse[-which(fileinuse$DeconMeth=="OptGBM"),] %>% as.data.frame()
 Others_temp_RMSE <- Others_temp_RMSE[which(Others_temp_RMSE$Value=="RMSE"),] %>% as.data.frame()
-Others_temp_Pearson <- fileinuse[-which(fileinuse$DeconMeth=="QPC"),] %>% as.data.frame()
+Others_temp_Pearson <- fileinuse[-which(fileinuse$DeconMeth=="OptGBM"),] %>% as.data.frame()
 Others_temp_Pearson <- Others_temp_Pearson[which(Others_temp_Pearson$Value=="PearsonR"),] %>% as.data.frame()
 
 target_by <- c("DeconMeth","Min.pct","Sampling","GeneNumber","RefNorm","BulkNorm","BulkCellNumber")
@@ -771,22 +771,22 @@ mean_df <- data.frame(BulkNorm = rep("RawCount",44),
                       Celltype = Celltype,
                       Method = Method)
 
-a_index <- QPC_temp[c(1:4),c("BulkNorm","BulkCellNumber","DeconMeth")] %>% as.data.frame()
+a_index <- OptGBM_temp[c(1:4),c("BulkNorm","BulkCellNumber","DeconMeth")] %>% as.data.frame()
 row.names(a_index) <- NULL
 for (i in 1:11) {
-  a <- cbind(QPC_temp[c(1:4),i],QPC_temp[c(5:8),i]) %>% as.data.frame()
+  a <- cbind(OptGBM_temp[c(1:4),i],OptGBM_temp[c(5:8),i]) %>% as.data.frame()
   colnames(a) <- c("RMSE","PearsonR")
   a$RMSE100 <- 100/a$RMSE
-  a$Celltype <- rep(colnames(QPC_temp)[i],4)
+  a$Celltype <- rep(colnames(OptGBM_temp)[i],4)
   a <- cbind(a,a_index) %>% as.data.frame()
   if(i==1){
-    QPC_df <- a
+    OptGBM_df <- a
   }else{
-    QPC_df <- rbind(QPC_df,a) %>% as.data.frame()
+    OptGBM_df <- rbind(OptGBM_df,a) %>% as.data.frame()
   }
   remove(a)
 }
-colnames(QPC_df)[which(colnames(QPC_df)=="DeconMeth")] <- "Method"
+colnames(OptGBM_df)[which(colnames(OptGBM_df)=="DeconMeth")] <- "Method"
 
 tempdf <- merge(x=Others_temp_RMSE[,c(1:11,12:18)],y=Others_temp_Pearson[,c(1:11,12:18)], by.x=target_by, by.y=target_by, all=TRUE)
 for (i in c(100,1000,2500,6000)) {
@@ -816,10 +816,10 @@ for (i in 1:11) {
 
 target_by <- colnames(best_df)
 mean_df <- mean_df[,sort(target_by)] %>% as.data.frame()
-QPC_df <- QPC_df[,sort(target_by)] %>% as.data.frame()
+OptGBM_df <- OptGBM_df[,sort(target_by)] %>% as.data.frame()
 oneref_df <- oneref_df[,sort(target_by)] %>% as.data.frame()
 total_df <- rbind(best_df,mean_df) %>% as.data.frame()
-total_df <- rbind(total_df,QPC_df) %>% as.data.frame()
+total_df <- rbind(total_df,OptGBM_df) %>% as.data.frame()
 total_df <- rbind(total_df,oneref_df) %>% as.data.frame()
 total_df$group <- paste(total_df$BulkCellNumber,total_df$Method,sep = "_")
 group_order <- sort(unique(total_df$group), decreasing = FALSE)
@@ -900,7 +900,7 @@ ggplot(data = combinetable, aes(x = factor(BulkNorm, levels = BulkNorm_order), y
         legend.key.height = unit(0.5, "cm"),legend.key.width = unit(0.5, "cm")) +
   scale_x_discrete(guide = guide_axis(angle = 90))
 
-#N2500_celltype_QPC_x-y correlation plot-------------------------------------------------------------------------
+#N2500_celltype_Optimal-GBM_x-y correlation plot-------------------------------------------------------------------------
 True_res <- read_csv(paste0("~/MergeDataset_BulkRNA_Celltype_N2500.csv"),
                      show_col_types = FALSE) %>% as.data.frame()
 True_res <- True_res[-which(True_res$Celltype=="Others"),] %>% as.data.frame()
@@ -1037,20 +1037,20 @@ TCGA_GBM_recur <- read_csv("~/Raw_Counts_HGNC_TCGA_GBM_total_duplicateRemoved_tu
 row.names(TCGA_GBM_recur) <- TCGA_GBM_recur$...1
 TCGA_GBM_recur$...1 <- NULL
 colnames(TCGA_GBM_recur) <- str_sub(colnames(TCGA_GBM_recur), start = 1,end = 15)
-#QPC-GBM deconvolution
-QPC_table <- QPC_table %>% t() %>% as.data.frame()
-QPC_table$TCGA_ID <- str_sub(row.names(QPC_table), start = 1, end = 12)
-QPC_table$PRS_type <- "Newly"
-QPC_table$PRS_type[grep("02", str_split_fixed(row.names(QPC_table),pattern = "-",4)[,4])] <- "Recurrent"
-QPC_table$Endo_Tumor <- QPC_table$`Endothelial cells` + QPC_table$`Tumor cells`
-QPC_table$Immune <- QPC_table$`B cells`+ QPC_table$`NKT-like cells` + QPC_table$`T cells`
-QPC_table$GAM_Mural <- QPC_table$`Macrophage-like GAMs` + QPC_table$`Microglia-like GAMs` + QPC_table$`Mural cells`
+#OptGBM-GBM deconvolution
+OptGBM_table <- OptGBM_table %>% t() %>% as.data.frame()
+OptGBM_table$TCGA_ID <- str_sub(row.names(OptGBM_table), start = 1, end = 12)
+OptGBM_table$PRS_type <- "Newly"
+OptGBM_table$PRS_type[grep("02", str_split_fixed(row.names(OptGBM_table),pattern = "-",4)[,4])] <- "Recurrent"
+OptGBM_table$Endo_Tumor <- OptGBM_table$`Endothelial cells` + OptGBM_table$`Tumor cells`
+OptGBM_table$Immune <- OptGBM_table$`B cells`+ OptGBM_table$`NKT-like cells` + OptGBM_table$`T cells`
+OptGBM_table$GAM_Mural <- OptGBM_table$`Macrophage-like GAMs` + OptGBM_table$`Microglia-like GAMs` + OptGBM_table$`Mural cells`
 
 celltype <- c("Dendritic cells","Endothelial cells","Macrophage-like GAMs","Microglia-like GAMs","NKT-like cells","Oligodendrocytes","T cells",
               "Tumor cells","B cells","Mural cells")
 for (i in 1:10) {
-  temp_df <- QPC_table[,c("TCGA_ID","PRS_type",celltype[i])]
-  colnames(temp_df) <- c("TCGA_ID","PRS_type","QPC")
+  temp_df <- OptGBM_table[,c("TCGA_ID","PRS_type",celltype[i])]
+  colnames(temp_df) <- c("TCGA_ID","PRS_type","OptGBM")
   temp_df$Celltype <- celltype[i]
   if(i==1){
     combinetable <- temp_df
@@ -1063,8 +1063,8 @@ combinetable_TCGA <- combinetable
 
 celltype2 <- c("Dendritic cells","Endo_Tumor","Immune","GAM_Mural","Oligodendrocytes")
 for (i in 1:5) {
-  temp_df <- QPC_table[,c("TCGA_ID","PRS_type",celltype2[i])]
-  colnames(temp_df) <- c("TCGA_ID","PRS_type","QPC")
+  temp_df <- OptGBM_table[,c("TCGA_ID","PRS_type",celltype2[i])]
+  colnames(temp_df) <- c("TCGA_ID","PRS_type","OptGBM")
   temp_df$Celltype <- celltype2[i]
   if(i==1){
     combinetable <- temp_df
@@ -1093,14 +1093,14 @@ blank_data <- data.frame(Celltype = factor(c("Dendritic cells","Dendritic cells"
                                "Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent"),
                          y = c(0, 4, 0, 30, 0, 35, 0, 30, -0.05, 0.05, 0, 25, 0, 0.6, 0, 90, 0, 0.015, 0, 85))
 
-p1 <- ggplot(combinetable_TCGA, aes(x = PRS_type, y = QPC, group = TCGA_ID)) +
+p1 <- ggplot(combinetable_TCGA, aes(x = PRS_type, y = OptGBM, group = TCGA_ID)) +
   geom_point(aes(color = factor(paste0(TCGA_ID,"           "))), size = 3) +
   geom_line(aes(color = factor(paste0(TCGA_ID,"           "))), size=1) +
   scale_color_manual(values=c("#B2182B","#F4A582","#2166AC","#A6CEE3","#006600","#99CC33")) +
   geom_blank(data = blank_data, aes(x = x, y = y, group = TCGA_ID)) +
   facet_wrap(vars(Celltype), nrow = 2, scales="free_y",
              labeller = labeller(Celltype = cell.labs)) +
-  labs(y="QPC proportion (%)", x = "") +
+  labs(y="OptGBM proportion (%)", x = "") +
   theme_bw() +
   theme(legend.position = "right",
         panel.border = element_rect(fill=NA, color="black", size=1, linetype="solid"),
@@ -1128,14 +1128,14 @@ blank_data <- data.frame(Celltype = factor(c("Dendritic cells","Dendritic cells"
                          TCGA_ID = c(rep("TCGA-06-0125",10)),
                          x = c("Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent"),
                          y = c(0, 4, 0, 110, 0, 0.5, 0, 110, 0, 20))
-p1 <- ggplot(combinetable_TCGA_C5, aes(x = PRS_type, y = QPC, group = TCGA_ID)) +
+p1 <- ggplot(combinetable_TCGA_C5, aes(x = PRS_type, y = OptGBM, group = TCGA_ID)) +
   geom_point(aes(color = factor(paste0(TCGA_ID,"           "))), size = 3) +
   geom_line(aes(color = factor(paste0(TCGA_ID,"           "))), size=1) +
   scale_color_manual(values=c("#B2182B","#F4A582","#2166AC","#A6CEE3","#006600","#99CC33")) +
   geom_blank(data = blank_data, aes(x = x, y = y, group = TCGA_ID)) +
   facet_wrap(vars(Celltype), nrow = 1, scales="free",
              labeller = labeller(Celltype = cell.labs)) +
-  labs(y="QPC proportion (%)", x = "") +
+  labs(y="OptGBM proportion (%)", x = "") +
   theme_bw() +
   theme(legend.position = "top",
         panel.border = element_rect(fill=NA, color="black", size=1, linetype="solid"),
@@ -1176,15 +1176,15 @@ CGGA <- read_csv("~/CGGA1018_RawReadCount.csv") %>% as.data.frame()
 row.names(CGGA) <- CGGA$...1
 CGGA$...1 <- NULL
 CGGA <- CGGA[,which(colnames(CGGA) %in% Sample_Info$CGGA_ID)] %>% as.data.frame()
-#QPC deconvolution
-QPC_table <- QPC_table %>% t() %>% as.data.frame()
-QPC_table$CGGA_ID <- row.names(QPC_table)
-write.csv(QPC_table, file = "~/QPC_table_CGGA_RawCount_Recur.csv")
+#Optimal-GBM deconvolution
+OptGBM_table <- OptGBM_table %>% t() %>% as.data.frame()
+OptGBM_table$CGGA_ID <- row.names(OptGBM_table)
+write.csv(OptGBM_table, file = "~/OptGBM_table_CGGA_RawCount_Recur.csv")
 #建立recurrent data-----
 
 Sample_Info <- read_excel("~/1018_CGGA_RNASeq_Sample_Info.xlsx") %>% as.data.frame() #downloaded from CGGA website
 Sample_Info <- Sample_Info[which(Sample_Info$IDH_mutation_status=="Wildtype" & Sample_Info$Histology %in% c("rGBM")),] %>% as.data.frame()
-CGGA_Recur <- read_csv("~/QPC_table_CGGA_RawCount_Recur.csv") %>% as.data.frame()
+CGGA_Recur <- read_csv("~/OptGBM_table_CGGA_RawCount_Recur.csv") %>% as.data.frame()
 row.names(CGGA_Recur) <- CGGA_Recur$...1
 CGGA_Recur$...1 <- NULL
 CGGA_Recur$CGGA_ID <- NULL
@@ -1206,7 +1206,7 @@ celltype <- c("Dendritic cells","Endothelial cells","Macrophage-like GAMs","Micr
               "Tumor cells","B cells","Mural cells")
 for (i in 1:10) {
   temp_df <- CGGA[,c("CGGA_ID","PRS_type",celltype[i])]
-  colnames(temp_df) <- c("CGGA_ID","PRS_type","QPC")
+  colnames(temp_df) <- c("CGGA_ID","PRS_type","OptGBM")
   temp_df$Celltype <- celltype[i]
   if(i==1){
     combinetable <- temp_df
@@ -1233,14 +1233,14 @@ blank_data <- data.frame(Celltype = factor(c("Dendritic cells","Dendritic cells"
                                "Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent"),
                          y = c(0, 5.5, 0, 50, 0, 60, 0, 50, 0, 1.75, 0, 100, 0, 7, 0, 110, 0, 1.5, 0, 85))
 
-p1 <- ggplot(combinetable, aes(x = PRS_type, y = QPC, color = factor(paste0(PRS_type,"    ")))) +
+p1 <- ggplot(combinetable, aes(x = PRS_type, y = OptGBM, color = factor(paste0(PRS_type,"    ")))) +
   geom_boxplot() +
   geom_jitter(shape=16, position=position_jitter(0.2)) +
   scale_color_manual(values=c("#B2182B","#2166AC")) +
   geom_blank(data = blank_data, aes(x = x, y = y, group = PRS_type)) +
   facet_wrap(vars(Celltype), nrow = 2, scales="free_y",
              labeller = labeller(Celltype = cell.labs)) +
-  labs(y="QPC proportion (%)", x = "") +
+  labs(y="OptGBM proportion (%)", x = "") +
   theme_bw() +
   theme(legend.position = "top",
         panel.border = element_rect(fill=NA, color="black", size=1, linetype="solid"),
@@ -1263,7 +1263,7 @@ CGGA$GAM_Mural <- CGGA$`Macrophage-like GAMs` + CGGA$`Microglia-like GAMs` + CGG
 celltype2 <- c("Dendritic cells","Endo_Tumor","Immune","GAM_Mural","Oligodendrocytes")
 for (i in 1:5) {
   temp_df <- CGGA[,c("CGGA_ID","PRS_type",celltype2[i])]
-  colnames(temp_df) <- c("CGGA_ID","PRS_type","QPC")
+  colnames(temp_df) <- c("CGGA_ID","PRS_type","OptGBM")
   temp_df$Celltype <- celltype2[i]
   if(i==1){
     combinetable <- temp_df
@@ -1284,14 +1284,14 @@ blank_data <- data.frame(Celltype = factor(c("Dendritic cells","Dendritic cells"
                          PRS_type = c(rep("Newly",10)),
                          x = c("Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent","Newly","Recurrent"),
                          y = c(0, 5, 0, 110, 0, 7.5, 0, 110, 0, 90))
-p1 <- ggplot(combinetable_CGGA_C5, aes(x = PRS_type, y = QPC, color = factor(paste0(PRS_type,"    ")))) +
+p1 <- ggplot(combinetable_CGGA_C5, aes(x = PRS_type, y = OptGBM, color = factor(paste0(PRS_type,"    ")))) +
   geom_boxplot() +
   geom_jitter(shape=16, position=position_jitter(0.2)) +
   scale_color_manual(values=c("#B2182B","#2166AC")) +
   geom_blank(data = blank_data, aes(x = x, y = y, group = PRS_type)) +
   facet_wrap(vars(Celltype), nrow = 1, scales="free_y",
              labeller = labeller(Celltype = cell.labs)) +
-  labs(y="QPC proportion (%)", x = "") +
+  labs(y="OptGBM proportion (%)", x = "") +
   theme_bw() +
   theme(legend.position = "top",
         panel.border = element_rect(fill=NA, color="black", size=1, linetype="solid"),
@@ -1307,6 +1307,6 @@ p1 <- ggplot(combinetable_CGGA_C5, aes(x = PRS_type, y = QPC, color = factor(pas
         strip.background = element_rect(color = "black", size = 1)) 
 p1
 
-pairwise.t.test(QPC_table$`Tumor cells`, QPC_table$PRS_type, p.adjust.method = "bonferroni", paired = FALSE, alternative = c("two.sided"))
+pairwise.t.test(OptGBM_table$`Tumor cells`, OptGBM_table$PRS_type, p.adjust.method = "bonferroni", paired = FALSE, alternative = c("two.sided"))
 median(oridata$`Tumor cells`[which(oridata$PRS_type=="Primary")])
 median(oridata$`Tumor cells`[which(oridata$PRS_type=="Recurrent")])
