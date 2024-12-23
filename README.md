@@ -124,14 +124,14 @@ remove(ref_path)
 Enter the expression matrix (raw count, TMM, or Lognormalization) and the reference list.
 ```R
 # run deconvolution                
-DeRes <- QPCdecon(ex_matrix, ref_List)
+DeRes <- GBMdecon(ex_matrix, ref_List)
 
 ## The function returns a cell type proportion table and save a "Optimal_GBM_result.csv" file
 ```
 
 ## Results   
 ```R
-DeRes <- QPCdecon(mydata, ref_list)
+DeRes <- GBMdecon(mydata, ref_list)
   
 ##                      TCGA-26-5133 TCGA-HT-7902 TCGA-VM-A8CF TCGA-14-1823 TCGA-DU-6393
 ## Dendritic cells              2.88         1.99         0.86         1.74         5.42
