@@ -79,7 +79,7 @@ mydata <- read_csv(url(urlfile)) %>% as.data.frame() %>% column_to_rownames("...
 
 # load functions
 source("https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/R/CIBERSORT_modified.R")
-source("https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/R/QPC_GBM_main.R")
+source("https://raw.githubusercontent.com/ianyfchang/Optimal-GBM/blob/master/R/Optimal-GBM_main.R")
 
 ```
 ### Reference matrices
