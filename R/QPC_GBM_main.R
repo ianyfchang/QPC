@@ -51,6 +51,6 @@ QPCdecon <- function(ex_matrix,ref_list){
     re_res[,i] <- NA
     re_res[,i] <- round(temp_df[,i]/sum(temp_df[,i]),digits = 4)*100
   }
-  write.csv(re_res, file = "~/QPC_GBM_result.csv")
+  write.csv(re_res, file = "~/Optimal_GBM_result.csv")
   re_res
 }
