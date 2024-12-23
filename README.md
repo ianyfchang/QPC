@@ -126,7 +126,7 @@ Enter the expression matrix (raw count, TMM, or Lognormalization) and the refere
 # run deconvolution                
 DeRes <- QPCdecon(ex_matrix, ref_List)
 
-## The function returns a cell type proportion table and save a "QPC_GBM_result.csv" file
+## The function returns a cell type proportion table and save a "Optimal_GBM_result.csv" file
 ```
 
 ## Results   
